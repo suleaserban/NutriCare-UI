@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { PasswordModule } from 'primeng/password';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PasswordModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

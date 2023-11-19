@@ -1,0 +1,26 @@
+/* Acest stil se aplică pentru ecrane de dimensiuni medii și mari, cum ar fi tablete și desktop-uri */
+@media screen and (min-width: 768px) {
+    .p-col-12.p-md-6.p-lg-4 {
+      padding: 2em;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+  }
+  
+  /* Pentru ecrane mici, puteți alege să nu aveți umbre sau să limitați lățimea */
+  @media screen and (max-width: 767px) {
+    .p-col-12.p-md-6.p-lg-4 {
+      padding: 1em;
+    }
+  }
+
+
+  .login-container {
+  text-align: center; /* Centrăm conținutul */
+}
+
+.logo {
+  max-width: 150px; /* Setăm o lățime maximă pentru logo */
+  margin-bottom: 20px; /* Adăugăm un spațiu sub logo */
+}

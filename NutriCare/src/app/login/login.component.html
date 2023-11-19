@@ -1,17 +1,32 @@
-<form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-  <div class="mb-4">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-      Email
-    </label>
-    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" pInputText formControlName="email" required>
+<div class="flex items-center justify-center min-h-screen bg-white">
+  <div class="w-full max-w-md">
+    <div class="mb-6 text-center">
+      <img class="mx-auto" src="assets/logo2.png" alt="NutriCare Logo" style="width: 150px; height: auto;">
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="space-y-6">
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Adresa de email</label>
+        <input id="email" type="email" formControlName="email" required
+               class="w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400
+                      focus:outline-none focus:border-blue-500 focus:ring-blue-500">
+      </div>
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700">Parola</label>
+        <input id="password" type="password" formControlName="password" required
+               class="w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400
+                      focus:outline-none focus:border-blue-500 focus:ring-blue-500">
+      </div>
+      <div>
+        <button type="submit" [disabled]="!loginForm.valid"
+                class="w-full px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md shadow-sm
+                       hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+          Autentificare
+        </button>
+      </div>
+    </form>
+    <div class="mt-6 text-sm text-center text-gray-500">
+      Nu ai cont?
+      <a href="#" class="text-blue-600 hover:text-blue-700">Înregistrează-te</a>
+    </div>
   </div>
-  <div class="mb-6">
-    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-      Parola
-    </label>
-    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" pInputText formControlName="password" required>
-  </div>
-  <div class="flex items-center justify-between">
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" pButton type="submit" label="Autentificare" [disabled]="!loginForm.valid"></button>
-  </div>
-</form>
+</div>
