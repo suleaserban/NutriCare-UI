@@ -7,6 +7,8 @@ export class QuizzService {
 
   private ponderiDto: any = {};
   private isFemale: boolean = false;
+  private isVegan:boolean =false;
+  private isVegetarian:boolean = false;
   private currentQuestionIndex: number = 0;
 
   constructor() {}
@@ -39,6 +41,22 @@ export class QuizzService {
 
   setIsFemale(value: boolean) {
     this.isFemale = value;
+  }
+
+  setIsVegan(value: boolean) {
+    this.isVegan = value;
+  }
+
+  setIsVegetarian(value: boolean) {
+    return this.isVegetarian = value;
+  }
+
+   getIsVegan() {
+    return this.isVegan ;
+  }
+
+  gettIsVegetarian() {
+    this.isVegetarian ;
   }
 
   getIsFemale(): boolean {

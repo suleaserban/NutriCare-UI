@@ -1,0 +1,23 @@
+
+<div class="flex flex-col items-center justify-center p-6" *ngIf="!this.isVegan">
+    <img src="assets/logo2.png" alt="Logo" class="mb-4 w-32 h-32" /> 
+    <h1 class="text-4xl font-sans mb-8 text-center">Cat de des mancati peste ?  </h1> 
+    <div class="flex justify-center gap-4 mt-4"> 
+        <button class="text-lg px-12 py-4 rounded-full border-2 border-gray-300 transition-colors duration-300 ease-in-out hover:border-green-500" (click)="toQ18()">Rar</button>
+        <button class="text-lg px-12 py-4 rounded-full border-2 border-gray-300 transition-colors duration-300 ease-in-out hover:border-green-500" (click)="toQ18()">De 2-3 ori pe saptamana</button>
+
+
+    </div>
+</div>
+	
+<div class="flex flex-col items-center justify-center p-6" *ngIf="this.isVegan">
+    <img src="assets/logo2.png" alt="Logo" class="mb-4 w-32 h-32" /> 
+    <h1 class="text-4xl font-sans mb-8 text-center">Cat de des mancati legume verzi, seminte de soia/in/chia sau  nuci ?  </h1> 
+    <div class="flex justify-center gap-4 mt-4"> 
+        <button class="text-lg px-12 py-4 rounded-full border-2 border-gray-300 transition-colors duration-300 ease-in-out hover:border-green-500" (click)="toQ18()">Rar</button>
+        <button class="text-lg px-12 py-4 rounded-full border-2 border-gray-300 transition-colors duration-300 ease-in-out hover:border-green-500" (click)="toQ18()">De 2-3 ori pe saptamana</button>
+        <button class="text-lg px-12 py-4 rounded-full border-2 border-gray-300 transition-colors duration-300 ease-in-out hover:border-green-500" (click)="toQ18()">Zilnic</button>
+
+    </div>
+</div>
+	
