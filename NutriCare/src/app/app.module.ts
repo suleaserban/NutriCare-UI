@@ -35,6 +35,12 @@ import { Question20Component } from './quizz/question20/question20.component';
 import { Question21Component } from './quizz/question21/question21.component';
 import { Question22Component } from './quizz/question22/question22.component';
 import { Question23Component } from './quizz/question23/question23.component';
+import { Question24Component } from './quizz/question24/question24.component';
+import { Question25Component } from './quizz/question25/question25.component';
+import { Question26Component } from './quizz/question26/question26.component';
+import { Question27Component } from './quizz/question27/question27.component';
+import { Question28Component } from './quizz/question28/question28.component';
+import { Question29Component } from './quizz/question29/question29.component';
 
 
 
@@ -69,6 +75,13 @@ import { Question23Component } from './quizz/question23/question23.component';
     Question21Component,
     Question22Component,
     Question23Component,
+    Question24Component,
+    Question25Component,
+    Question26Component,
+    Question27Component,
+    Question28Component,
+    Question29Component,
+ 
 
   ],
   imports: [

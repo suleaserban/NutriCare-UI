@@ -11,7 +11,6 @@ import { Question4Component } from './quizz/question4/question4.component';
 import { Question5Component } from './quizz/question5/question5.component';
 import { Question6Component } from './quizz/question6/question6.component';
 import { Question7Component } from './quizz/question7/question7.component';
-import { QuizzProgressGuard } from './quizz-progress-guard';
 import { Question8Component } from './quizz/question8/question8.component';
 import { Question9Component } from './quizz/question9/question9.component';
 import { Question10Component } from './quizz/question10/question10.component';
@@ -27,6 +26,12 @@ import { Question19Component } from './quizz/question19/question19.component';
 import { Question20Component } from './quizz/question20/question20.component';
 import { Question21Component } from './quizz/question21/question21.component';
 import { Question22Component } from './quizz/question22/question22.component';
+import { Question23Component } from './quizz/question23/question23.component';
+import { Question24Component } from './quizz/question24/question24.component';
+import { Question25Component } from './quizz/question25/question25.component';
+import { Question26Component } from './quizz/question26/question26.component';
+import { Question27Component } from './quizz/question27/question27.component';
+import { Question28Component } from './quizz/question28/question28.component';
 
 
 const routes: Routes = [
@@ -54,6 +59,12 @@ const routes: Routes = [
   { path: 'question20', component: Question20Component, canActivate: [AuthGuard] },
   { path: 'question21', component: Question21Component, canActivate: [AuthGuard] },
   { path: 'question22', component: Question22Component, canActivate: [AuthGuard] },
+  { path: 'question23', component: Question23Component, canActivate: [AuthGuard] },
+  { path: 'question24', component: Question24Component, canActivate: [AuthGuard] },
+  { path: 'question25', component: Question25Component, canActivate: [AuthGuard] },
+  { path: 'question26', component: Question26Component, canActivate: [AuthGuard] },
+  { path: 'question27', component: Question27Component, canActivate: [AuthGuard] },
+  { path: 'question28', component: Question28Component, canActivate: [AuthGuard] },
   { path: 'sorry', component: SorryComponent, canActivate: [AuthGuard] },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' }
