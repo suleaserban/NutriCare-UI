@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class QuizzService {
 
-  private ponderiDto: any = {};
+  private ponderiDto: { [key: string]: number } = {};
   private isFemale: boolean = false;
   private isVegan:boolean =false;
   private isVegetarian:boolean = false;
@@ -27,11 +27,11 @@ export class QuizzService {
     return index <= this.currentQuestionIndex + 1;
   }
 
-  setPondere(key: string, value: number) {
+  public setPondere(key: string, value: number): void {
     this.ponderiDto[key] = value;
   }
 
-  getPondere(key: string): number {
+  public getPondere(key: string): number {
     return this.ponderiDto[key];
   }
 

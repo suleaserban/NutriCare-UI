@@ -41,8 +41,8 @@ import { Question26Component } from './quizz/question26/question26.component';
 import { Question27Component } from './quizz/question27/question27.component';
 import { Question28Component } from './quizz/question28/question28.component';
 import { Question29Component } from './quizz/question29/question29.component';
-
-
+import { Question30Component } from './quizz/question30/question30.component';
+import { Question31Component } from './quizz/question31/question31.component';
 
 
 @NgModule({
@@ -81,6 +81,8 @@ import { Question29Component } from './quizz/question29/question29.component';
     Question27Component,
     Question28Component,
     Question29Component,
+    Question30Component,
+    Question31Component
  
 
   ],

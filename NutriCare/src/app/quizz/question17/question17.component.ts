@@ -15,9 +15,14 @@ export class Question17Component {
     ) {
       this.isVegan = this.quizzService.getIsVegan();
     }
+    handleResponse(pondere: number) {
+      if(!this.isVegan){
+      this.quizzService.setPondere('factor_peste', pondere);
+      this.router.navigate(['/question18']);
+      } else {
+        this.quizzService.setPondere('factor_peste_vegan', pondere);
+        this.router.navigate(['/question18']);
+      }
 
-  toQ18(){
-
-    this.router.navigate(['/question18']); 
-     }
+    }
 }

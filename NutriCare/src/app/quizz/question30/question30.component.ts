@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { QuizzService } from 'src/app/services/quizz service/quizz.service';
 
 @Component({
-  selector: 'app-question21',
-  templateUrl: './question21.component.html',
-  styleUrls: ['./question21.component.css']
+  selector: 'app-question30',
+  templateUrl: './question30.component.html',
+  styleUrls: ['./question30.component.css']
 })
-export class Question21Component {
+export class Question30Component {
   constructor( 
     private router: Router,
     private quizzService: QuizzService
@@ -15,8 +15,8 @@ export class Question21Component {
 
     handleResponse(pondere: number) {
  
-      this.quizzService.setPondere('factor_probiotice', pondere);
-      this.router.navigate(['/question22']);
+      this.quizzService.setPondere('factor_magneziu', pondere);
+      this.router.navigate(['/question31']);
 
     }
 }

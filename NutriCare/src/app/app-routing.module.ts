@@ -32,6 +32,9 @@ import { Question25Component } from './quizz/question25/question25.component';
 import { Question26Component } from './quizz/question26/question26.component';
 import { Question27Component } from './quizz/question27/question27.component';
 import { Question28Component } from './quizz/question28/question28.component';
+import { Question29Component } from './quizz/question29/question29.component';
+import { Question30Component } from './quizz/question30/question30.component';
+import { Question31Component } from './quizz/question31/question31.component';
 
 
 const routes: Routes = [
@@ -65,6 +68,9 @@ const routes: Routes = [
   { path: 'question26', component: Question26Component, canActivate: [AuthGuard] },
   { path: 'question27', component: Question27Component, canActivate: [AuthGuard] },
   { path: 'question28', component: Question28Component, canActivate: [AuthGuard] },
+  { path: 'question29', component: Question29Component, canActivate: [AuthGuard] },
+  { path: 'question30', component: Question30Component, canActivate: [AuthGuard] },
+  { path: 'question31', component: Question31Component, canActivate: [AuthGuard] },
   { path: 'sorry', component: SorryComponent, canActivate: [AuthGuard] },
 
   { path: '', redirectTo: 'login', pathMatch: 'full' }

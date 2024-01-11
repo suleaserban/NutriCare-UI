@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { QuizzService } from 'src/app/services/quizz service/quizz.service';
 
 @Component({
   selector: 'app-question26',
@@ -8,10 +9,14 @@ import { Router } from '@angular/router';
 })
 export class Question26Component {
   constructor( 
-    private router: Router
+    private router: Router,
+    private quizzService: QuizzService
     ) {}
 
-    toQ27(){
-    this.router.navigate(['/question27']);    
-     }
+    handleResponse(pondere: number) {
+ 
+      this.quizzService.setPondere('factor_creier', pondere);
+      this.router.navigate(['/question27']);
+
+    }
 }
