@@ -1,10 +1,9 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
@@ -43,7 +42,11 @@ import { Question28Component } from './quizz/question28/question28.component';
 import { Question29Component } from './quizz/question29/question29.component';
 import { Question30Component } from './quizz/question30/question30.component';
 import { Question31Component } from './quizz/question31/question31.component';
-
+import { JwtInterceptor } from './auth.interceptor';
+import { MyRecoComponent } from './my-reco/my-reco.component';
+import { AnalyzingAnswersComponent } from './analyzing-answers/analyzing-answers.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -82,9 +85,9 @@ import { Question31Component } from './quizz/question31/question31.component';
     Question28Component,
     Question29Component,
     Question30Component,
-    Question31Component
- 
-
+    Question31Component,
+    MyRecoComponent,
+    AnalyzingAnswersComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,9 +95,17 @@ import { Question31Component } from './quizz/question31/question31.component';
     HttpClientModule,
     ReactiveFormsModule,
     PasswordModule,
-    ButtonModule
+    ButtonModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

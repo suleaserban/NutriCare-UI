@@ -1,0 +1,4 @@
+.custom-spinner .mat-progress-spinner circle,
+.custom-spinner path {
+  stroke: #00ff00 !important; /* Acesta este un verde strălucitor, schimbă-l după cum dorești */
+}

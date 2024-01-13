@@ -38,6 +38,15 @@ export class AuthService {
     localStorage.removeItem('token');
 
   }
+
+  getUserEmailFromToken(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      return decoded.sub; 
+    }
+    return null;
+  }
 }
 
 

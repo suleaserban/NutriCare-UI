@@ -1,0 +1,20 @@
+<div class="flex flex-col items-center justify-center h-screen p-6">
+  <div *ngIf="!isAnalysisComplete" class="flex justify-center items-center">
+    <div class="custom-spinner-color">
+      <mat-progress-spinner
+        mode="indeterminate"
+        class="custom-spinner"
+      ></mat-progress-spinner>
+    </div>
+    <p class="text-xl text-gray-700 ml-4">Analizăm răspunsurile tale...</p>
+  </div>
+  <div *ngIf="isAnalysisComplete" class="text-center">
+    <p class="text-2xl font-sans mb-4">Recomandarea ta este gata!</p>
+    <button
+      class="bg-green-500 text-white font-sans px-4 py-2 rounded-lg font-bold text-lg hover:bg-green-600 transition-colors"
+      (click)="goToRecommendations()"
+    >
+      Vezi recomandările
+    </button>
+  </div>
+</div>

@@ -15,7 +15,7 @@ export class Question29Component {
 
     handleResponse(pondere: number) {
  
-      this.quizzService.setPondere('factor_stres', pondere);
+      this.quizzService.setPondere('factor_omega3', pondere);
       this.router.navigate(['/question30']);
 
     }

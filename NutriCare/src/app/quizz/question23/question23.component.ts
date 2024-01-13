@@ -17,6 +17,6 @@ export class Question23Component {
  
       this.quizzService.setPondere('factor_par_piele_unghii', pondere);
       this.router.navigate(['/question24']);
-
+      console.log(this.quizzService.getFinalPonderiDto());
     }
 }

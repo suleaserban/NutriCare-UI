@@ -35,51 +35,175 @@ import { Question28Component } from './quizz/question28/question28.component';
 import { Question29Component } from './quizz/question29/question29.component';
 import { Question30Component } from './quizz/question30/question30.component';
 import { Question31Component } from './quizz/question31/question31.component';
-
+import { MyRecoComponent } from './my-reco/my-reco.component';
+import { AnalyzingAnswersComponent } from './analyzing-answers/analyzing-answers.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'question1', component: Question1Component, canActivate: [AuthGuard] },
-  { path: 'question2', component: Question2Component, canActivate: [AuthGuard] },
-  { path: 'question3', component: Question3Component, canActivate: [AuthGuard] },
-  { path: 'question4', component: Question4Component, canActivate: [AuthGuard] },
-  { path: 'question5', component: Question5Component, canActivate: [AuthGuard] },
-  { path: 'question6', component: Question6Component, canActivate: [AuthGuard] },
-  { path: 'question7', component: Question7Component, canActivate: [AuthGuard] },
-  { path: 'question8', component: Question8Component, canActivate: [AuthGuard] },
-  { path: 'question9', component: Question9Component, canActivate: [AuthGuard] },
-  { path: 'question10', component: Question10Component, canActivate: [AuthGuard] },
-  { path: 'question11', component: Question11Component, canActivate: [AuthGuard] },
-  { path: 'question12', component: Question12Component, canActivate: [AuthGuard] },
-  { path: 'question13', component: Question13Component, canActivate: [AuthGuard] },
-  { path: 'question14', component: Question14Component, canActivate: [AuthGuard] },
-  { path: 'question15', component: Question15Component, canActivate: [AuthGuard] },
-  { path: 'question16', component: Question16Component, canActivate: [AuthGuard] },
-  { path: 'question17', component: Question17Component, canActivate: [AuthGuard] },
-  { path: 'question18', component: Question18Component, canActivate: [AuthGuard] },
-  { path: 'question19', component: Question19Component, canActivate: [AuthGuard] },
-  { path: 'question20', component: Question20Component, canActivate: [AuthGuard] },
-  { path: 'question21', component: Question21Component, canActivate: [AuthGuard] },
-  { path: 'question22', component: Question22Component, canActivate: [AuthGuard] },
-  { path: 'question23', component: Question23Component, canActivate: [AuthGuard] },
-  { path: 'question24', component: Question24Component, canActivate: [AuthGuard] },
-  { path: 'question25', component: Question25Component, canActivate: [AuthGuard] },
-  { path: 'question26', component: Question26Component, canActivate: [AuthGuard] },
-  { path: 'question27', component: Question27Component, canActivate: [AuthGuard] },
-  { path: 'question28', component: Question28Component, canActivate: [AuthGuard] },
-  { path: 'question29', component: Question29Component, canActivate: [AuthGuard] },
-  { path: 'question30', component: Question30Component, canActivate: [AuthGuard] },
-  { path: 'question31', component: Question31Component, canActivate: [AuthGuard] },
+  {
+    path: 'question1',
+    component: Question1Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question2',
+    component: Question2Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question3',
+    component: Question3Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question4',
+    component: Question4Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question5',
+    component: Question5Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question6',
+    component: Question6Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question7',
+    component: Question7Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question8',
+    component: Question8Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question9',
+    component: Question9Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question10',
+    component: Question10Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question11',
+    component: Question11Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question12',
+    component: Question12Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question13',
+    component: Question13Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question14',
+    component: Question14Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question15',
+    component: Question15Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question16',
+    component: Question16Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question17',
+    component: Question17Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question18',
+    component: Question18Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question19',
+    component: Question19Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question20',
+    component: Question20Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question21',
+    component: Question21Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question22',
+    component: Question22Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question23',
+    component: Question23Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question24',
+    component: Question24Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question25',
+    component: Question25Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question26',
+    component: Question26Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question27',
+    component: Question27Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question28',
+    component: Question28Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question29',
+    component: Question29Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question30',
+    component: Question30Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'question31',
+    component: Question31Component,
+    canActivate: [AuthGuard],
+  },
   { path: 'sorry', component: SorryComponent, canActivate: [AuthGuard] },
-
-  { path: '', redirectTo: 'login', pathMatch: 'full' }
-
-
+  { path: 'my-reco', component: MyRecoComponent, canActivate: [AuthGuard] },
+  { path: 'analyzing-answers', component: AnalyzingAnswersComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

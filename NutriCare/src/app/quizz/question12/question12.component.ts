@@ -17,5 +17,6 @@ export class Question12Component {
  
       this.quizzService.setPondere('factor_somn', pondere);
       this.router.navigate(['/question13']);
+      console.log(this.quizzService.getFinalPonderiDto());
     }
 }
