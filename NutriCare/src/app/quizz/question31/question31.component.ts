@@ -28,10 +28,10 @@ export class Question31Component {
   }
 
   private calculateUserScore() {
-    let userEmail = this.authService.getUserEmailFromToken()!;
+    let id = parseInt(localStorage.getItem('id')!);
     let ponderiDto = new PonderiDto();
     ponderiDto.ponderi = this.quizzService.getFinalPonderiDto();
-    this.userService.calculateUserScore(userEmail, ponderiDto).subscribe(
+    this.userService.calculateUserScore(id, ponderiDto).subscribe(
       (response) => {
         console.log('success', response);
       },

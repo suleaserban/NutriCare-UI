@@ -47,6 +47,7 @@ import { MyRecoComponent } from './my-reco/my-reco.component';
 import { AnalyzingAnswersComponent } from './analyzing-answers/analyzing-answers.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ButtonModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
+    ProgressSpinnerModule,
   ],
   providers: [
     {

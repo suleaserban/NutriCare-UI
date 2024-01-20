@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { QuizzService } from '../quizz service/quizz.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserScore } from 'src/app/models/userScore.model';
+import { UserScoreDTO } from 'src/app/models/userScoreDTO';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +12,7 @@ export class UserScoreService {
 
   constructor(private http: HttpClient, private quizzService: QuizzService) {}
 
-  userScore!: UserScore;
-
-  getTopUserScores(userId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${userId}/top-scores`);
+  getTopUserScores(userId: number): Observable<UserScoreDTO> {
+    return this.http.get<UserScoreDTO>(`${this.apiUrl}/${userId}/top-scores`);
   }
 }

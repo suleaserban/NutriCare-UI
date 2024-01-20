@@ -1,20 +1,18 @@
-
 import { HttpClient } from '@angular/common/http';
-import { User } from '../../models/user.model';
+import { UserDTO } from '../../models/userDTO';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
-  private apiUrl = 'http://localhost:8080/api/auth'; 
+  private apiUrl = 'http://localhost:8080/api/auth';
 
   constructor(private http: HttpClient) {}
 
-  login(user: User): Observable<any> {
+  login(user: UserDTO): Observable<any> {
     return this.http.post(`${this.apiUrl}/authenticate`, user);
   }
 
@@ -34,19 +32,16 @@ export class AuthService {
   }
 
   logout(): void {
- 
     localStorage.removeItem('token');
-
+    localStorage.removeItem('id');
   }
 
   getUserEmailFromToken(): string | null {
     const token = this.getToken();
     if (token) {
       const decoded: any = jwtDecode(token);
-      return decoded.sub; 
+      return decoded.sub;
     }
     return null;
   }
 }
-
-

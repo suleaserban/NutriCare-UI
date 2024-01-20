@@ -1,4 +1,4 @@
-export interface UserScore {
+export interface UserScoreDTO {
   id: number;
   userId: number;
   productId: number;

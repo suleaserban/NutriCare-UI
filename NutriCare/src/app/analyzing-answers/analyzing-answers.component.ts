@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 @Component({
   selector: 'app-analyzing-answers',
   templateUrl: './analyzing-answers.component.html',
