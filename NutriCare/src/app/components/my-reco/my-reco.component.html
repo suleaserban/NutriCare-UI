@@ -1,0 +1,71 @@
+<div class="flex flex-col justify-center min-h-screen px-4 md:px-0">
+  <div class="flex flex-wrap justify-center gap-6">
+    <div
+      *ngFor="let product of recommendedProducts"
+      class="flex flex-col justify-between p-6 bg-white rounded-lg border border-gray-200 shadow-lg transition-transform transform hover:-translate-y-1 w-80 md:w-72 h-[30rem]"
+    >
+      <div>
+        <h5 class="mb-2 text-xl font-semibold text-gray-800">
+          {{ product.nume }}
+        </h5>
+        <p class="mb-3 text-gray-600">{{ product.descriere }}</p>
+      </div>
+      <button
+        (click)="openModal(product)"
+        class="mt-auto text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-4 py-2 text-center transition-colors duration-300"
+      >
+        Learn More
+      </button>
+    </div>
+  </div>
+
+  <div
+    *ngIf="showModal"
+    class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+    id="my-modal"
+  >
+    <div
+      class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white"
+    >
+      <div class="mt-3 text-center">
+        <h3
+          class="text-lg leading-6 font-medium text-gray-900"
+          id="modal-title"
+        >
+          {{ selectedProduct.nume }}
+        </h3>
+        <div class="mt-2 px-7 py-3">
+          <p class="text-sm text-gray-500">
+            {{ selectedProduct.descriere }}
+          </p>
+
+          <ul class="text-left">
+            <li>{{ selectedProduct.beneficii! }}</li>
+            <li>{{ selectedProduct.ingrediente }}</li>
+            <li>{{ selectedProduct.modAdministrare }}</li>
+            <li>{{ selectedProduct.contraIndicatii }}</li>
+            <li>{{ selectedProduct.producator }}</li>
+          </ul>
+        </div>
+        <div class="items-center px-4 py-3">
+          <button
+            id="ok-btn"
+            class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300"
+            (click)="closeModal()"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="fixed inset-x-0 bottom-10 flex justify-center px-4">
+  <!-- Adjusted bottom positioning -->
+  <button
+    class="px-8 py-4 bg-white rounded-full border-2 border-gray-300 transition-colors duration-300 ease-in-out hover:border-green-500 text-gray-800 shadow-lg"
+    (click)="goToShoppingCart()"
+  >
+    Cos de cumparaturi
+  </button>
+</div>
