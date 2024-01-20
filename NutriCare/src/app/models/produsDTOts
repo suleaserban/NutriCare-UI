@@ -1,4 +1,4 @@
-export interface Produs {
+export interface produsDTO {
   id: number;
   beneficii: string;
   contraIndicatii: string;

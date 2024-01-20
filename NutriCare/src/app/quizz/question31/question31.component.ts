@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { PonderiDto } from 'src/app/models/ponderi.model';
+import { PonderiDto } from 'src/app/models/ponderiDTO';
 import { AuthService } from 'src/app/services/auth service/auth.service';
 import { QuizzService } from 'src/app/services/quizz service/quizz.service';
 import { UserService } from 'src/app/services/user service/user.service';

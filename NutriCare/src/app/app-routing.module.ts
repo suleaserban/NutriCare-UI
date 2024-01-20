@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
 import { AuthGuard } from './auth.guard';
 import { Question1Component } from './quizz/question1/question1.component';
 import { Question2Component } from './quizz/question2/question2.component';
@@ -35,8 +35,8 @@ import { Question28Component } from './quizz/question28/question28.component';
 import { Question29Component } from './quizz/question29/question29.component';
 import { Question30Component } from './quizz/question30/question30.component';
 import { Question31Component } from './quizz/question31/question31.component';
-import { MyRecoComponent } from './my-reco/my-reco.component';
-import { AnalyzingAnswersComponent } from './analyzing-answers/analyzing-answers.component';
+import { MyRecoComponent } from './components/my-reco/my-reco.component';
+import { AnalyzingAnswersComponent } from './components/analyzing-answers/analyzing-answers.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -198,7 +198,11 @@ const routes: Routes = [
   },
   { path: 'sorry', component: SorryComponent, canActivate: [AuthGuard] },
   { path: 'my-reco', component: MyRecoComponent, canActivate: [AuthGuard] },
-  { path: 'analyzing-answers', component: AnalyzingAnswersComponent, canActivate: [AuthGuard] },
+  {
+    path: 'analyzing-answers',
+    component: AnalyzingAnswersComponent,
+    canActivate: [AuthGuard],
+  },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 

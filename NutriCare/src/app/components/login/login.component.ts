@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UserDTO } from '../models/userDTO';
-import { AuthService } from '../services/auth service/auth.service';
+import { UserDTO } from '../../models/userDTO';
+import { AuthService } from '../../services/auth service/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth service/auth.service';
-import { UserScoreService } from '../services/user score service/userScore.service';
-import { UserScoreDTO } from '../models/userScoreDTO';
+import { AuthService } from '../../services/auth service/auth.service';
+import { UserScoreService } from '../../services/user score service/userScore.service';
+import { UserScoreDTO } from '../../models/userScoreDTO';
 
 @Component({
   selector: 'app-my-reco',
@@ -15,7 +15,7 @@ export class MyRecoComponent implements OnInit {
     let id = localStorage.getItem('id');
     this.userScoreService
       .getTopUserScores(parseInt(id!))
-      .subscribe((topScores: UserScoreDTO) => {
+      .subscribe((topScores: UserScoreDTO[]) => {
         console.log(topScores);
       });
   }
