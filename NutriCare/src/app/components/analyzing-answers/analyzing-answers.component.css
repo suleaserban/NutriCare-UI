@@ -1,5 +1,5 @@
 :host ::ng-deep .geek-spinner .p-progress-spinner-circle {
-  animation: geek 1s infinite;
+  animation: geek 0.5s infinite;
 }
 
 @keyframes geek {
@@ -9,7 +9,7 @@
     animation-timing-function: ease-out;
   }
   50% {
-    stroke: #22c55e;
+    stroke: #1b9b55;
     animation-timing-function: ease-in;
   }
 }

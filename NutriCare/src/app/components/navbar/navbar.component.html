@@ -2,26 +2,47 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-16">
       <div class="flex">
-        <div class="-ml-2 mr-2 flex items-center md:hidden">
-
-        </div>
+        <div class="-ml-2 mr-2 flex items-center md:hidden"></div>
         <div class="flex-shrink-0 flex items-center">
-       
-          <img  class="h-24" src="assets/logo2.png" alt="NutriCare Logo">
+          <a routerLink="/home" class="cursor-pointer">
+            <img class="h-24" src="assets/logo2.png" alt="NutriCare Logo" />
+          </a>
         </div>
-        <div class="hidden md:ml-6 md:flex md:space-x-8">
-
-        </div>
+        <div class="hidden md:ml-6 md:flex md:space-x-8"></div>
       </div>
       <div class="flex items-center">
-        <a href="/cart" class="text-gray-800 hover:text-gray-600">
+        <button
+          class="text-gray-800 hover:text-gray-600"
+          (click)="redirectToShoppingCart()"
+        >
+          <i class="fa-solid fa-cart-shopping"></i>
           Coșul meu
           <span class="badge bg-blue-500 text-white rounded-full ml-1"></span>
-        </a>
-        <a href="/account" class="text-gray-800 hover:text-gray-600 ml-6">
-          Contul meu
-        </a>
-        <button (click)="toQuizz()"class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-6">
+        </button>
+        <div class="relative ml-6">
+          <button
+            (click)="toggleAccountDropdown()"
+            class="text-gray-800 hover:text-gray-600 focus:outline-none"
+          >
+            <i class="fa-solid fa-user"></i>
+            Contul meu
+          </button>
+          <div
+            *ngIf="isAccountDropdownVisible"
+            class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-50"
+          >
+            <button
+              (click)="signOut()"
+              class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              Delogare
+            </button>
+          </div>
+        </div>
+        <button
+          (click)="toQuizz()"
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-6"
+        >
           Completează chestionarul
         </button>
       </div>
