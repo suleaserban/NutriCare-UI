@@ -1,4 +1,4 @@
-const productImageUrls: { [key: number]: string } = {
+export const productImageUrls: { [key: number]: string } = {
   //Ashwaganda
   1: 'https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2F4deb4f30d3ceeb7ccf4ed7029328c64e.cdn.bubble.io%2Fd75%2Ff1674465399042x106943037525941250%2FMULBERRY.png?w=256&h=&auto=compress&dpr=1&fit=max',
   //Carbune activ
