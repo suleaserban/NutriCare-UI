@@ -1,21 +1,30 @@
 <div class="flex flex-col justify-center min-h-screen px-4 md:px-0">
-  <div class="flex flex-wrap justify-center gap-6">
-    <div
-      *ngFor="let product of recommendedProducts"
-      class="flex flex-col justify-between p-6 bg-white rounded-lg border border-gray-200 shadow-lg transition-transform transform hover:-translate-y-1 w-80 md:w-72 h-[30rem]"
-    >
-      <div>
-        <h5 class="mb-2 text-xl font-semibold text-gray-800">
-          {{ product.nume }}
-        </h5>
-        <p class="mb-3 text-gray-600">{{ product.descriere }}</p>
-      </div>
-      <button
-        (click)="openModal(product)"
-        class="mt-auto text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-4 py-2 text-center transition-colors duration-300"
+  <div class="flex flex-col justify-center min-h-screen px-4 md:px-0">
+    <div class="flex flex-wrap justify-center gap-6">
+      <div
+        *ngFor="let product of recommendedProducts"
+        class="flex flex-col justify-between p-6 bg-white rounded-lg border border-gray-200 shadow-lg transition-transform transform hover:-translate-y-1 w-80 md:w-72 h-[30rem]"
       >
-        Learn More
-      </button>
+        <div class="flex-shrink-0">
+          <img
+            src="https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2F4deb4f30d3ceeb7ccf4ed7029328c64e.cdn.bubble.io%2Fd75%2Ff1663952322534x884633552685501000%2FOM%25C3%2589GA%25203.png?w=256&h=&auto=compress&dpr=1&fit=max"
+            alt="{{ product.nume }}"
+            class="object-contain h-48 w-full"
+          />
+        </div>
+        <div class="mt-4">
+          <h5 class="mb-2 text-xl font-semibold text-gray-800">
+            {{ product.nume }}
+          </h5>
+          <p class="mb-3 text-gray-600">{{ product.descriere }}</p>
+        </div>
+        <button
+          (click)="openModal(product)"
+          class="mt-auto text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-4 py-2 text-center transition-colors duration-300"
+        >
+          Learn More
+        </button>
+      </div>
     </div>
   </div>
 

@@ -33,7 +33,7 @@ export class MyRecoComponent implements OnInit {
         })
       )
       .subscribe((products: ProductDTO[]) => {
-        this.recommendedProducts = products; // Assign the fetched products to the array
+        this.recommendedProducts = products;
       });
   }
   listRecommendedProducts() {
