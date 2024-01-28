@@ -37,6 +37,7 @@ import { Question30Component } from './quizz/question30/question30.component';
 import { Question31Component } from './quizz/question31/question31.component';
 import { MyRecoComponent } from './components/my-reco/my-reco.component';
 import { AnalyzingAnswersComponent } from './components/analyzing-answers/analyzing-answers.component';
+import { ProductsComponent } from './components/products/products.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -201,6 +202,11 @@ const routes: Routes = [
   {
     path: 'analyzing-answers',
     component: AnalyzingAnswersComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'products',
+    component: ProductsComponent,
     canActivate: [AuthGuard],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

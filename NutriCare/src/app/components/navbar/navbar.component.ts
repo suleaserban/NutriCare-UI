@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { QuizzService } from '../../services/quizz service/quizz.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,18 @@ import { QuizzService } from '../../services/quizz service/quizz.service';
 })
 export class NavbarComponent {
   isAccountDropdownVisible = false;
-  constructor(private router: Router, private quizzService: QuizzService) {}
+  currentUrl: string | undefined;
+  constructor(private router: Router, private quizzService: QuizzService) {
+    this.router.events
+      .pipe(
+        filter(
+          (event): event is NavigationEnd => event instanceof NavigationEnd
+        )
+      )
+      .subscribe((event) => {
+        this.currentUrl = event.url;
+      });
+  }
 
   toQuizz() {
     this.quizzService.setCurrentQuestionIndex(1);

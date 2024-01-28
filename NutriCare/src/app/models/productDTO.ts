@@ -7,4 +7,5 @@ export interface ProductDTO {
   modAdministrare: string;
   nume: string;
   producator: string;
+  pret: number;
 }

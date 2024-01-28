@@ -48,7 +48,8 @@ import { AnalyzingAnswersComponent } from './components/analyzing-answers/analyz
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-
+import { ProductsComponent } from './components/products/products.component';
+import { PaginatorModule } from 'primeng/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,6 +90,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     Question31Component,
     MyRecoComponent,
     AnalyzingAnswersComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +102,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
     ProgressSpinnerModule,
+    PaginatorModule,
   ],
   providers: [
     {

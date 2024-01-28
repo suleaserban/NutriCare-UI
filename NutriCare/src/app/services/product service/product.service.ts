@@ -15,6 +15,10 @@ export class ProductService {
     return this.http.get<ProductDTO>(`${this.apiUrl}/products/${id}`);
   }
 
+  getAllProducts(): Observable<ProductDTO[]> {
+    return this.http.get<ProductDTO[]>(`${this.apiUrl}/get-all-products`);
+  }
+
   getRecommendedProducts(ids: number[]): Observable<ProductDTO[]> {
     return this.http.get<ProductDTO[]>(
       `${this.apiUrl}/get-recommended-products`,

@@ -7,6 +7,13 @@
           <a routerLink="/home" class="cursor-pointer">
             <img class="h-24" src="assets/logo2.png" alt="NutriCare Logo" />
           </a>
+          <a
+            routerLink="/products"
+            class="ml-6 text-gray-800 hover:text-gray-600 cursor-pointer produse-link"
+            [ngClass]="{ underline: currentUrl === '/products' }"
+          >
+            Produse
+          </a>
         </div>
         <div class="hidden md:ml-6 md:flex md:space-x-8"></div>
       </div>
