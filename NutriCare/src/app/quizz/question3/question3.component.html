@@ -9,10 +9,15 @@
     type="number"
     class="mt-2 mb-4 px-4 py-2 border-2 border-gray-300 rounded-lg transition-colors duration-300 ease-in-out focus:border-green-500 text-center"
     placeholder="Introduceți greutatea"
+    [(ngModel)]="greutate"
+    max="200"
+    name="greutate"
   />
+
   <button
     class="px-6 py-3 rounded-full border-2 border-gray-300 transition-colors duration-300 ease-in-out hover:border-green-500 flex items-center justify-center"
     (click)="toQ4()"
+    (click)="showErrorMessage = true"
   >
     <svg
       class="w-6 h-6"
@@ -29,4 +34,10 @@
       ></path>
     </svg>
   </button>
+  <div
+    class="text-red-600 mt-2"
+    *ngIf="showErrorMessage && (!greutate || greutate > 200)"
+  >
+    Vă rugăm să introduceți un număr valid.
+  </div>
 </div>

@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit {
   paginatedProducts: ProductDTO[] = [];
   selectedProduct: ProductDTO = <ProductDTO>{};
   currentPage: number = 1;
+  rows: number | undefined;
 
   constructor(private productService: ProductService) {}
 
@@ -21,6 +22,7 @@ export class ProductsComponent implements OnInit {
     this.productService.getAllProducts().subscribe(
       (products) => {
         this.allProducts = products;
+        this.rows = 8;
         this.updatePaginatedProducts();
       },
       (error) => {
@@ -30,15 +32,15 @@ export class ProductsComponent implements OnInit {
   }
 
   updatePaginatedProducts() {
-    const startIndex = (this.currentPage - 1) * 7;
+    const startIndex = (this.currentPage - 1) * this.rows!;
     this.paginatedProducts = this.allProducts.slice(
       startIndex,
-      startIndex + 10
+      startIndex + this.rows!
     );
   }
 
   paginate(event: any) {
-    this.currentPage = event.page + 1;
+    this.currentPage = event.page + 1; // PrimeNG paginator page starts from 0
     this.updatePaginatedProducts();
   }
 
@@ -50,6 +52,8 @@ export class ProductsComponent implements OnInit {
   closeModal(): void {
     this.showModal = false;
   }
+
+  addToCart(product: ProductDTO) {}
 
   productImageUrls: { [key: number]: string } = {
     //Ashwaganda

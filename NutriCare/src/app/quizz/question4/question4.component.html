@@ -9,10 +9,13 @@
     type="number"
     class="mt-2 mb-4 px-4 py-2 border-2 border-gray-300 rounded-lg transition-colors duration-300 ease-in-out focus:border-green-500 text-center w-full max-w-xs"
     placeholder="Introduceți înălțimea în cm"
+    [(ngModel)]="inaltime"
+    name="inaltime"
   />
   <button
     class="px-6 py-3 rounded-full border-2 border-gray-300 transition-colors duration-300 ease-in-out hover:border-green-500 flex items-center justify-center"
     (click)="toQ5()"
+    (click)="showErrorMessage = true"
   >
     <svg
       class="w-6 h-6"
@@ -29,4 +32,10 @@
       ></path>
     </svg>
   </button>
+  <div
+    class="text-red-600 mt-2"
+    *ngIf="showErrorMessage && (!inaltime || inaltime < 100 || inaltime > 300)"
+  >
+    Vă rugăm să introduceți o înălțime validă, între 100 și 300 cm.
+  </div>
 </div>
