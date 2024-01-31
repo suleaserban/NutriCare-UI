@@ -13,6 +13,7 @@ export class ProductsComponent implements OnInit {
   showModal = false;
   paginatedProducts: ProductDTO[] = [];
   selectedProduct: ProductDTO = <ProductDTO>{};
+  filteredProducts: ProductDTO[] = [];
   currentPage: number = 1;
   rows: number | undefined;
 
@@ -29,6 +30,13 @@ export class ProductsComponent implements OnInit {
         console.error('Error fetching products', error);
       }
     );
+  }
+  applyFilters(filter: string, event: Event) {
+    const input = event.target as HTMLInputElement;
+    const checked = input.checked;
+
+    // Now use `checked` to filter your products
+    // ...
   }
 
   updatePaginatedProducts() {
