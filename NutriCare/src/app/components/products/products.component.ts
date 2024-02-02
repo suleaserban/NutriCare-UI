@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Filter } from 'src/app/models/filters.model';
 import { ProductDTO } from 'src/app/models/productDTO';
+import { FiltersService } from 'src/app/services/filters service/filters.service';
 import { PaginationService } from 'src/app/services/pagination service/pagination.service';
 import { ProductService } from 'src/app/services/product service/product.service';
 
@@ -16,10 +18,15 @@ export class ProductsComponent implements OnInit {
   filteredProducts: ProductDTO[] = [];
   currentPage: number = 1;
   rows: number | undefined;
+  filters: Filter[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private filtersService: FiltersService
+  ) {}
 
   ngOnInit() {
+    this.filters = this.filtersService.getFilters();
     this.productService.getAllProducts().subscribe(
       (products) => {
         this.allProducts = products;
