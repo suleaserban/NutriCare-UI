@@ -6,18 +6,22 @@ import { Filter } from 'src/app/models/filters.model';
 })
 export class FiltersService {
   private filters: Filter[] = [
-    { name: 'Inima', value: 'factor_inima' },
-    { name: 'Stres', value: 'factor_stres' },
-    { name: 'Energie', value: 'factor_energie' },
-    { name: 'Fitness', value: 'factor_fitness' },
-    { name: 'Dispozitie', value: 'factor_dispozitie' },
-    { name: 'Digestie', value: 'factor_dispozitie' },
-    { name: 'Par piele si unghii', value: 'factor_par_piele_si_unghii' },
-    { name: 'Oase', value: 'factor_par_piele_si_unghii' },
-    { name: 'Articulatii', value: 'factor_articulatii' },
-    { name: 'Imunitate', value: 'factor_imunitate' },
-    { name: 'Creier', value: 'factor_creier' },
-    { name: 'Ficat', value: 'factor_ficat' },
+    { name: 'Inima', value: 'factor_inima', checked: false },
+    { name: 'Stres', value: 'factor_stres', checked: false },
+    { name: 'Energie', value: 'factor_energie', checked: false },
+    { name: 'Fitness', value: 'factor_fitness', checked: false },
+    { name: 'Dispozitie', value: 'factor_dispozitie', checked: false },
+    { name: 'Digestie', value: 'factor_digestie', checked: false },
+    {
+      name: 'Par piele si unghii',
+      value: 'factor_par_piele_si_unghii',
+      checked: false,
+    },
+    { name: 'Oase', value: 'factor_par_piele_si_unghii', checked: false },
+    { name: 'Articulatii', value: 'factor_articulatii', checked: false },
+    { name: 'Imunitate', value: 'factor_imunitate', checked: false },
+    { name: 'Creier', value: 'factor_creier', checked: false },
+    { name: 'Ficat', value: 'factor_ficat', checked: false },
   ];
 
   getFilters(): Filter[] {

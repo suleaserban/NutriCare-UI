@@ -27,4 +27,15 @@ export class ProductService {
       }
     );
   }
+
+  getProductsByFactors(factors: string[]): Observable<ProductDTO[]> {
+    let params = new HttpParams();
+    factors.forEach((factor) => {
+      params = params.append('productFactors', factor);
+    });
+    return this.http.get<ProductDTO[]>(
+      `${this.apiUrl}/get-products-by-factors`,
+      { params }
+    );
+  }
 }

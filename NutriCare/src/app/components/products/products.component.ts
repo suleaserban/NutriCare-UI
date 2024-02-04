@@ -19,6 +19,7 @@ export class ProductsComponent implements OnInit {
   currentPage: number = 1;
   rows: number | undefined;
   filters: Filter[] = [];
+  showPaginator: boolean = true;
 
   constructor(
     private productService: ProductService,
@@ -38,15 +39,45 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
-  applyFilters(filter: string, event: Event) {
-    const input = event.target as HTMLInputElement;
-    const checked = input.checked;
 
-    // Now use `checked` to filter your products
-    // ...
+  applyFilters(filterValue: string, event: Event) {
+    const input = event.target as HTMLInputElement;
+    const filter = this.filters.find((f) => f.value === filterValue);
+    if (filter) {
+      filter.checked = input.checked;
+    }
+
+    const selectedFilters = this.filters
+      .filter((f) => f.checked)
+      .map((f) => f.value);
+
+    if (selectedFilters.length > 0) {
+      this.productService.getProductsByFactors(selectedFilters).subscribe(
+        (filteredProducts) => {
+          this.paginatedProducts = filteredProducts;
+        },
+        (error) => {
+          console.error('Error fetching filtered products', error);
+        }
+      );
+      this.showPaginator = false;
+    } else {
+      this.productService.getAllProducts().subscribe(
+        (products) => {
+          this.allProducts = products;
+          this.rows = 8;
+          this.updatePaginatedProducts();
+        },
+        (error) => {
+          console.error('Error fetching products', error);
+        }
+      );
+      this.showPaginator = true;
+    }
   }
 
   updatePaginatedProducts() {
+    console.log(this.paginatedProducts);
     const startIndex = (this.currentPage - 1) * this.rows!;
     this.paginatedProducts = this.allProducts.slice(
       startIndex,
@@ -55,7 +86,7 @@ export class ProductsComponent implements OnInit {
   }
 
   paginate(event: any) {
-    this.currentPage = event.page + 1; // PrimeNG paginator page starts from 0
+    this.currentPage = event.page + 1;
     this.updatePaginatedProducts();
   }
 
