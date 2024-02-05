@@ -39,6 +39,6 @@ export class NavbarComponent {
   }
 
   redirectToShoppingCart() {
-    this.router.navigate(['/shopping-cart']);
+    this.router.navigate(['/cart']);
   }
 }

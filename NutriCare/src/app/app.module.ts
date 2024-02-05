@@ -50,6 +50,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProductsComponent } from './components/products/products.component';
 import { PaginatorModule } from 'primeng/paginator';
+import { CartComponent } from './components/cart/cart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,6 +92,7 @@ import { PaginatorModule } from 'primeng/paginator';
     MyRecoComponent,
     AnalyzingAnswersComponent,
     ProductsComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
