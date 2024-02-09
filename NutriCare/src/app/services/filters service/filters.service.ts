@@ -17,7 +17,7 @@ export class FiltersService {
       value: 'factor_par_piele_si_unghii',
       checked: false,
     },
-    { name: 'Oase', value: 'factor_par_piele_si_unghii', checked: false },
+    { name: 'Oase', value: 'factor_oase', checked: false },
     { name: 'Articulatii', value: 'factor_articulatii', checked: false },
     { name: 'Imunitate', value: 'factor_imunitate', checked: false },
     { name: 'Creier', value: 'factor_creier', checked: false },
