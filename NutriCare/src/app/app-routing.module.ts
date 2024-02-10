@@ -39,6 +39,7 @@ import { MyRecoComponent } from './components/my-reco/my-reco.component';
 import { AnalyzingAnswersComponent } from './components/analyzing-answers/analyzing-answers.component';
 import { ProductsComponent } from './components/products/products.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -213,6 +214,12 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartComponent,
+    canActivate: [AuthGuard],
+  },
+
+  {
+    path: 'checkout',
+    component: CheckoutComponent,
     canActivate: [AuthGuard],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

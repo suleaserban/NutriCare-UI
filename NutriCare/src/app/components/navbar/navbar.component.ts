@@ -10,7 +10,9 @@ import { filter } from 'rxjs/operators';
 })
 export class NavbarComponent {
   isAccountDropdownVisible = false;
+  isDropdownOpen = false;
   currentUrl: string | undefined;
+
   constructor(private router: Router, private quizzService: QuizzService) {
     this.router.events
       .pipe(
@@ -40,5 +42,9 @@ export class NavbarComponent {
 
   redirectToShoppingCart() {
     this.router.navigate(['/cart']);
+  }
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 }

@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div class="container mx-auto mt-10 p-5 bg-white shadow-lg">
+  <h2 class="text-2xl font-bold mb-5">Checkout</h2>
+  <form
+    [formGroup]="checkoutForm"
+    (ngSubmit)="onSubmit()"
+    class="w-full max-w-lg"
+  >
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="first-name"
+        >
+          First Name
+        </label>
+        <input
+          formControlName="firstName"
+          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          id="first-name"
+          type="text"
+          placeholder="Jane"
+        />
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <label
+          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+          for="last-name"
+        >
+          Last Name
+        </label>
+        <input
+          formControlName="lastName"
+          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          id="last-name"
+          type="text"
+          placeholder="Doe"
+        />
+      </div>
+    </div>
+
+    <div class="flex justify-end mt-6">
+      <button
+        type="submit"
+        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Place Order
+      </button>
+    </div>
+  </form>
+</div>

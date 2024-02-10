@@ -51,6 +51,8 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProductsComponent } from './components/products/products.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { CartPopUpComponent } from './components/cart-pop-up/cart-pop-up.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,6 +95,8 @@ import { CartComponent } from './components/cart/cart.component';
     AnalyzingAnswersComponent,
     ProductsComponent,
     CartComponent,
+    CheckoutComponent,
+    CartPopUpComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,53 @@
+<div class="p-6 bg-white shadow-xl rounded-lg">
+  <ul role="list" class="divide-y divide-gray-200">
+    <li *ngFor="let item of shoppingCart?.items" class="py-6 flex">
+      <div class="ml-4 flex-1 flex flex-col">
+        <div class="flex justify-between text-base font-medium text-gray-900">
+          <h4>{{ item.productName }}</h4>
+          <p class="ml-4">$ {{ item.price }}</p>
+        </div>
+        <div class="flex-1 flex items-end justify-between text-sm">
+          <div class="flex items-center">
+            <button
+              type="button"
+              (click)="decreaseQuantity(item.productId)"
+              class="text-gray-500 hover:text-gray-700"
+            >
+              <i class="fas fa-minus-circle"></i>
+            </button>
+            <p class="text-gray-500 mx-3">Qty {{ item.quantity }}</p>
+            <button
+              type="button"
+              (click)="increaseQuantity(item.productId)"
+              class="text-gray-500 hover:text-gray-700"
+            >
+              <i class="fas fa-plus-circle"></i>
+            </button>
+          </div>
+          <button
+            type="button"
+            (click)="removeItem(item.productId)"
+            class="font-medium text-red-600 hover:text-red-500"
+          >
+            <i class="fas fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="border-t border-gray-200 py-6 mt-4">
+    <div class="flex justify-between text-base font-medium text-gray-900">
+      <p>Total</p>
+      <p>$ {{ shoppingCart?.total }}</p>
+    </div>
+    <div class="mt-6">
+      <button
+        (click)="navigateToCheckout()"
+        class="flex items-center justify-center rounded-md border border-transparent bg-green-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-green-700 w-full"
+      >
+        Vezi cosul
+      </button>
+    </div>
+  </div>
+</div>
