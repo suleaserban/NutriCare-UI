@@ -12,7 +12,11 @@ export class CartPopUpComponent {
   shoppingCart?: ShoppingCartDTO;
   userId?: number;
 
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(
+    private cartService: CartService,
+    private router: Router,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.userId = parseInt(localStorage.getItem('id')!);
@@ -36,15 +40,12 @@ export class CartPopUpComponent {
   }
 
   removeItem(productId: number): void {
-    const userId = this.shoppingCart?.userId;
-    if (userId) {
-      this.cartService.removeItem(this.userId!, productId).subscribe({
-        next: () => {
-          this.getShoppingCart(this.userId!);
-        },
-        error: (error) => console.error('Error:', error),
-      });
-    }
+    this.cartService.removeItem(this.userId!, productId).subscribe({
+      next: () => {
+        this.getShoppingCart(this.userId!);
+      },
+      error: (error) => console.error('Error:', error),
+    });
   }
 
   increaseQuantity(productId: number): void {
