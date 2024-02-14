@@ -5,7 +5,7 @@
       class="py-4 flex justify-between items-center"
     >
       <div>
-        <h4 class="text-gray-900 font-semibold">{{ item.productName }}</h4>
+        <h4 class="text-gray-900">{{ item.productName }}</h4>
         <div class="flex items-center">
           <button
             type="button"
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div>
-        <p class="text-gray-900 font-semibold">{{ item.price }} RON</p>
+        <p class="text-gray-900">{{ item.price }} RON</p>
         <button
           type="button"
           (click)="removeItem(item.productId)"
