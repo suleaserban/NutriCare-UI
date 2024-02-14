@@ -1,51 +1,151 @@
 <app-navbar></app-navbar>
-<div class="container mx-auto mt-10 p-5 bg-white shadow-lg">
-  <h2 class="text-2xl font-bold mb-5">Checkout</h2>
-  <form
-    [formGroup]="checkoutForm"
-    (ngSubmit)="onSubmit()"
-    class="w-full max-w-lg"
-  >
-    <div class="flex flex-wrap -mx-3 mb-6">
-      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="first-name"
-        >
-          First Name
-        </label>
-        <input
-          formControlName="firstName"
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="first-name"
-          type="text"
-          placeholder="Jane"
-        />
+<div class="container mx-auto mt-10 flex flex-wrap">
+  <!-- Left Column for the Checkout Form -->
+  <div class="w-full lg:w-2/3 px-4">
+    <form
+      [formGroup]="checkoutForm"
+      (ngSubmit)="onSubmit()"
+      class="flex flex-col"
+    >
+      <div class="flex flex-wrap -mx-2">
+        <div class="w-full md:w-1/2 px-2 mb-6">
+          <label
+            for="firstName"
+            class="block mb-2 text-sm font-medium text-gray-900"
+            >Prenume</label
+          >
+          <input
+            type="text"
+            id="firstName"
+            formControlName="firstName"
+            placeholder="Introduceți prenumele"
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border -blue-500 block w-full p-2.5 shadow-sm"
+          />
+        </div>
+        <div class="w-full md:w-1/2 px-2 mb-6">
+          <label
+            for="lastName"
+            class="block mb-2 text-sm font-medium text-gray-900"
+            >Nume</label
+          >
+          <input
+            type="text"
+            id="lastName"
+            formControlName="lastName"
+            placeholder="Introduceți numele de familie"
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 shadow-sm"
+          />
+        </div>
       </div>
-      <div class="w-full md:w-1/2 px-3">
-        <label
-          class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-          for="last-name"
-        >
-          Last Name
-        </label>
-        <input
-          formControlName="lastName"
-          class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-          id="last-name"
-          type="text"
-          placeholder="Doe"
-        />
-      </div>
-    </div>
 
-    <div class="flex justify-end mt-6">
-      <button
-        type="submit"
-        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-      >
-        Place Order
-      </button>
+      <div class="mb-6">
+        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900"
+          >Telefon</label
+        >
+        <input
+          type="text"
+          id="phone"
+          formControlName="phone"
+          placeholder="Introduceți numărul de telefon"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        />
+      </div>
+
+      <div class="mb-6">
+        <label for="county" class="block mb-2 text-sm font-medium text-gray-900"
+          >Județ</label
+        >
+        <input
+          type="text"
+          id="county"
+          formControlName="county"
+          placeholder="Introduceți județul"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        />
+      </div>
+      <div class="mb-6">
+        <label for="city" class="block mb-2 text-sm font-medium text-gray-900"
+          >Oraș</label
+        >
+        <input
+          type="text"
+          id="city"
+          formControlName="city"
+          placeholder="Introduceți orașul"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        />
+      </div>
+      <div class="mb-6">
+        <label
+          for="address"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Adresă</label
+        >
+        <input
+          type="text"
+          id="address"
+          formControlName="address"
+          placeholder="Introduceți adresa"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        />
+      </div>
+
+      <div class="mb-6">
+        <span class="text-gray-700">Metodă de plată</span>
+        <div class="mt-2">
+          <label class="inline-flex items-center">
+            <input
+              type="radio"
+              formControlName="paymentMethod"
+              value="cash"
+              class="form-radio text-blue-600"
+              checked
+            />
+            <span class="ml-2">Ramburs</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="flex justify-end mt-6">
+        <button
+          type="submit"
+          class="px-6 py-3 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-green-800 focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
+        >
+          Plasează comanda
+        </button>
+      </div>
+    </form>
+  </div>
+  <!-- Right Column for Order Summary -->
+  <div class="w-full lg:w-1/3 px-4">
+    <div class="bg-white shadow-lg rounded-lg p-6">
+      <h3 class="text-lg font-medium text-gray-900">Rezumatul Comenzii</h3>
+      <ul class="mt-4 divide-y divide-gray-200">
+        <!-- Iterarea prin elementele coșului de cumpărături -->
+        <li
+          *ngFor="let item of shoppingCart?.items"
+          class="py-4 flex justify-between items-center"
+        >
+          <div>
+            <h4 class="text-gray-900 font-semibold">{{ item.productName }}</h4>
+            <p class="text-gray-500">Cantitate: {{ item.quantity }}</p>
+          </div>
+          <div>
+            <p class="text-gray-900 font-semibold">{{ item.price }} RON</p>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Subtotal Section -->
+      <div class="border-t border-gray-200 pt-4 mt-4">
+        <div class="flex justify-between items-center">
+          <p class="text-base font-medium text-gray-900">Total</p>
+          <p class="text-base font-medium text-gray-900">
+            {{ shoppingCart?.total }} RON
+          </p>
+        </div>
+      </div>
     </div>
-  </form>
+  </div>
 </div>
