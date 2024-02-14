@@ -50,7 +50,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProductsComponent } from './components/products/products.component';
 import { PaginatorModule } from 'primeng/paginator';
-import { CartComponent } from './components/cart/cart.component';
+
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CartPopUpComponent } from './components/cart-pop-up/cart-pop-up.component';
 @NgModule({
@@ -94,7 +94,7 @@ import { CartPopUpComponent } from './components/cart-pop-up/cart-pop-up.compone
     MyRecoComponent,
     AnalyzingAnswersComponent,
     ProductsComponent,
-    CartComponent,
+
     CheckoutComponent,
     CartPopUpComponent,
   ],

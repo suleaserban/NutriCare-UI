@@ -38,7 +38,6 @@ import { Question31Component } from './quizz/question31/question31.component';
 import { MyRecoComponent } from './components/my-reco/my-reco.component';
 import { AnalyzingAnswersComponent } from './components/analyzing-answers/analyzing-answers.component';
 import { ProductsComponent } from './components/products/products.component';
-import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
@@ -209,11 +208,6 @@ const routes: Routes = [
   {
     path: 'products',
     component: ProductsComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'cart',
-    component: CartComponent,
     canActivate: [AuthGuard],
   },
 
