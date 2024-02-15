@@ -1,0 +1,47 @@
+:host ::ng-deep .p-radiobutton .p-radiobutton-box {
+  border-color: #1b9b55;
+}
+
+:host ::ng-deep .p-radiobutton .p-radiobutton-box.p-highlight {
+  background-color: #1b9b55;
+  border-color: #1b9b55;
+}
+
+:host
+  ::ng-deep
+  .p-radiobutton
+  .p-radiobutton-box.p-highlight
+  .p-radiobutton-icon {
+  background-color: #1b9b55;
+}
+
+:host ::ng-deep .p-radiobutton-box:not(.p-disabled):hover {
+  border-color: #1b9b55;
+}
+
+:host ::ng-deep .p-radiobutton-box.p-highlight:not(.p-disabled):hover {
+  background-color: #1b9b55;
+  border-color: #1b9b55;
+}
+
+:host ::ng-deep .p-radiobutton-box.p-highlight .p-radiobutton-icon:hover {
+  background-color: #1b9b55;
+}
+
+:host ::ng-deep .p-radiobutton-box:not(.p-highlight):not(.p-disabled):hover {
+  border-color: #1b9b55;
+}
+
+:host
+  ::ng-deep
+  .p-radiobutton-box:not(.p-highlight):not(.p-disabled):hover
+  .p-radiobutton-icon {
+  background-color: #1b9b55;
+}
+:host ::ng-deep .p-radiobutton-checked .p-radiobutton-box {
+  border-color: #a2d9a2;
+}
+
+:host ::ng-deep .p-radiobutton-checked .p-radiobutton-box .p-radiobutton-icon {
+  background-color: #a2d9a2;
+}

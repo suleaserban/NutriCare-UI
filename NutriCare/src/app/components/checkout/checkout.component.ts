@@ -24,6 +24,7 @@ export class CheckoutComponent {
     address: new FormControl('', Validators.required),
     county: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
+    codpostal: new FormControl('', Validators.required),
     cardNumber: new FormControl(''),
     paymentMethod: new FormControl('cash'),
 

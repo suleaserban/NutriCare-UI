@@ -50,7 +50,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ProductsComponent } from './components/products/products.component';
 import { PaginatorModule } from 'primeng/paginator';
-
+import { RadioButtonModule } from 'primeng/radiobutton';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CartPopUpComponent } from './components/cart-pop-up/cart-pop-up.component';
 @NgModule({
@@ -110,6 +110,7 @@ import { CartPopUpComponent } from './components/cart-pop-up/cart-pop-up.compone
     ProgressSpinnerModule,
     PaginatorModule,
     FormsModule,
+    RadioButtonModule,
   ],
   providers: [
     {
