@@ -24,7 +24,7 @@ export class CheckoutComponent {
     city: new FormControl('', Validators.required),
   });
 
-  constructor(private cartService: CartService) {} // Inject your cart service
+  constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.userId = parseInt(localStorage.getItem('id')!);
