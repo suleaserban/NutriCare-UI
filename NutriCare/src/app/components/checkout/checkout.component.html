@@ -1,12 +1,12 @@
 <app-navbar></app-navbar>
 <div class="container mx-auto mt-10 flex flex-wrap">
+  <!-- Left side -->
   <div class="w-full lg:w-2/3 px-4 mb-10">
     <div class="w-full mb-6 flex justify-center items-center">
       <h2 class="text-xl font-semibold leading-tight text-gray-900">
         Detalii Comandă
       </h2>
     </div>
-
     <div class="bg-white shadow-lg rounded-lg p-6">
       <form
         [formGroup]="checkoutForm"
@@ -157,16 +157,96 @@
         <div class="mb-6">
           <span class="text-gray-700">Metodă de plată</span>
           <div class="mt-2">
+            <!-- Opțiunea pentru plată în numerar -->
             <label class="inline-flex items-center">
               <input
                 type="radio"
                 formControlName="paymentMethod"
                 value="cash"
-                class="form-radio text-blue-600"
-                checked
+                class="form-radio text-green-600"
+                (change)="onPaymentMethodChange('cash')"
               />
               <span class="ml-2">Ramburs</span>
             </label>
+
+            <!-- Opțiunea pentru plată cu cardul -->
+            <label class="inline-flex items-center ml-4">
+              <input
+                type="radio"
+                formControlName="paymentMethod"
+                value="card"
+                class="form-radio text-green-600"
+                (change)="onPaymentMethodChange('card')"
+              />
+              <span class="ml-2">Card de credit</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Câmpurile pentru detalii card, care sunt afișate doar când se alege plată cu cardul -->
+        <div *ngIf="paymentMethod === 'card'">
+          <div class="mb-4">
+            <label
+              for="cardNumber"
+              class="block text-sm font-medium text-gray-700"
+              >Număr card</label
+            >
+            <input
+              type="text"
+              id="cardNumber"
+              formControlName="cardNumber"
+              placeholder="Introduceți numărul cardului"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              (keyup)="detectCardType($event)"
+            />
+            <div *ngIf="cardType" class="text-sm text-gray-600 mt-2">
+              Tipul cardului: {{ cardType }}
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="expiryDate"
+              class="block text-sm font-medium text-gray-700"
+              >Data expirării (LL/AA)</label
+            >
+            <input
+              type="text"
+              id="expiryDate"
+              formControlName="expiryDate"
+              placeholder="MM/YY"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="securityCode"
+              class="block text-sm font-medium text-gray-700"
+              >Cod de securitate</label
+            >
+            <input
+              type="text"
+              id="securityCode"
+              formControlName="securityCode"
+              placeholder="CVC"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label
+              for="cardName"
+              class="block text-sm font-medium text-gray-700"
+              >Numele de pe card</label
+            >
+            <input
+              type="text"
+              id="cardName"
+              formControlName="cardName"
+              placeholder="Numele complet"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            />
           </div>
         </div>
       </form>
@@ -174,7 +254,7 @@
   </div>
 
   <div class="w-full lg:w-1/3 px-4">
-    <div class="bg-white shadow-lg rounded-lg p-6">
+    <div class="bg-gray-100 shadow-lg rounded-lg p-6">
       <h3 class="text-lg font-medium text-gray-900">Sumarul Comenzii</h3>
       <ul class="mt-4 divide-y divide-gray-200">
         <li
@@ -190,7 +270,6 @@
           </div>
         </li>
       </ul>
-
       <div class="border-t border-gray-200 pt-4 mt-4">
         <div class="flex justify-between items-center">
           <p class="text-base font-medium text-gray-900">Total</p>
@@ -199,14 +278,14 @@
           </p>
         </div>
       </div>
-    </div>
-    <div class="w-full flex justify-center mt-6">
-      <button
-        type="submit"
-        class="px-6 py-3 border border-transparent font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-green-800 focus:ring-2 focus:ring-green-600 focus:ring-opacity-50"
-      >
-        Plasează comanda
-      </button>
+      <div class="w-full flex justify-center mt-6">
+        <button
+          type="submit"
+          class="px-6 py-3 border border-transparent font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:border-blue-800 focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50"
+        >
+          Plasează comanda
+        </button>
+      </div>
     </div>
   </div>
 </div>
