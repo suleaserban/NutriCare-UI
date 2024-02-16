@@ -18,6 +18,14 @@ export class CartService {
     });
   }
 
+  addItem(userId: number, productId: number): Observable<any> {
+    const params = new HttpParams()
+      .set('userId', userId.toString())
+      .set('productId', productId.toString())
+      .set('quantity', 1);
+    return this.http.post(`${this.apiUrl}/add`, {}, { params });
+  }
+
   removeItem(userId: number, productId: number): Observable<any> {
     const params = new HttpParams()
       .set('userId', userId.toString())

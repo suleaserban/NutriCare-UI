@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Filter } from 'src/app/models/filters.model';
 import { ProductDTO } from 'src/app/models/productDTO';
+import { CartService } from 'src/app/services/cart service/cart.service';
 import { FiltersService } from 'src/app/services/filters service/filters.service';
 import { PaginationService } from 'src/app/services/pagination service/pagination.service';
 import { ProductService } from 'src/app/services/product service/product.service';
@@ -20,13 +21,16 @@ export class ProductsComponent implements OnInit {
   rows: number | undefined;
   filters: Filter[] = [];
   showPaginator: boolean = true;
+  userId?: number;
 
   constructor(
     private productService: ProductService,
-    private filtersService: FiltersService
+    private filtersService: FiltersService,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
+    this.userId = parseInt(localStorage.getItem('id')!);
     this.filters = this.filtersService.getFilters();
     this.productService.getAllProducts().subscribe(
       (products) => {
@@ -99,7 +103,12 @@ export class ProductsComponent implements OnInit {
     this.showModal = false;
   }
 
-  addToCart(product: ProductDTO) {}
+  addToCart(product: ProductDTO) {
+    this.cartService.addItem(this.userId!, product.id).subscribe({
+      next: () => {},
+      error: (error) => console.error('Error:', error),
+    });
+  }
 
   productImageUrls: { [key: number]: string } = {
     //Ashwaganda

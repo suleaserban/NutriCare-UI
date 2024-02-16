@@ -4,9 +4,13 @@
       *ngFor="let item of shoppingCart?.items"
       class="py-4 flex justify-between items-center"
     >
+      <img
+        [src]="productImageUrls[item.productId]"
+        class="w-10 h-10 object-contain bg-gray-200 rounded-full"
+      />
       <div>
         <h4 class="text-gray-900">{{ item.productName }}</h4>
-        <div class="flex items-center">
+        <div class="flex items-center justify-center">
           <button
             type="button"
             (click)="decreaseQuantity(item.productId)"
