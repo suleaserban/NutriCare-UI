@@ -34,17 +34,17 @@ export class Question15Component {
 
   toQ16() {
     this.router.navigate(['/question16']);
+    this.quizzService.setIsVegan(false);
   }
 
   toQ17Vegan() {
+    this.quizzService.setPondere('factor_vitb', 1);
     this.quizzService.setIsVegan(true);
     this.router.navigate(['/question17']);
-
-    //aici tre sa adaugi factor vitamina b12 direct
   }
 
   toQ16Vegetarian() {
-    this.quizzService.setIsVegetarian(true);
+    this.quizzService.setIsVegan(true);
     this.router.navigate(['/question16']);
   }
 

@@ -12,7 +12,15 @@ export class UserService {
 
   constructor(private http: HttpClient, private quizzService: QuizzService) {}
 
-  calculateUserScore(id: number, ponderiDto: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${id}/calculate-scores`, ponderiDto);
+  calculateUserScore(
+    id: number,
+    ponderiDto: any,
+    isVegan: any
+  ): Observable<any> {
+    const requestBody = {
+      ponderiDto: ponderiDto,
+      isVegan: isVegan,
+    };
+    return this.http.post(`${this.apiUrl}/${id}/calculate-scores`, requestBody);
   }
 }

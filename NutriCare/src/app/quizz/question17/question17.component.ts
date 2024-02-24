@@ -37,10 +37,10 @@ export class Question17Component {
 
   handleResponse(pondere: number) {
     if (!this.isVegan) {
-      this.quizzService.setPondere('factor_peste', pondere);
+      this.quizzService.setPondere('factor_omega3', pondere);
       this.router.navigate(['/question18']);
     } else {
-      this.quizzService.setPondere('factor_peste_vegan', pondere);
+      this.quizzService.setPondere('factor_omega3', pondere);
       this.router.navigate(['/question18']);
     }
   }

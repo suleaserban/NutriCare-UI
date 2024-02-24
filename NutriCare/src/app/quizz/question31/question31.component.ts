@@ -50,7 +50,8 @@ export class Question31Component {
     let id = parseInt(localStorage.getItem('id')!);
     let ponderiDto = new PonderiDto();
     ponderiDto.ponderi = this.quizzService.getFinalPonderiDto();
-    this.userService.calculateUserScore(id, ponderiDto).subscribe(
+    let isVegan = this.quizzService.getIsVegan();
+    this.userService.calculateUserScore(id, ponderiDto, isVegan).subscribe(
       (response) => {
         console.log('success', response);
       },
