@@ -8,6 +8,7 @@
         <a
           routerLink="/products"
           class="ml-6 text-gray-800 hover:text-gray-600 cursor-pointer"
+          [class.active-link]="currentUrl === '/products'"
         >
           Produse
         </a>
@@ -44,8 +45,16 @@
           </button>
           <div
             *ngIf="isAccountDropdownVisible"
-            class="origin-top-right absolute mr-[-10px] mt-20 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-50"
+            class="origin-top-right absolute mt-24 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 z-50"
+            style="margin-top: calc(6rem + 25px); right: -35px"
           >
+            <a
+              routerLink="/my-reco"
+              class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              (click)="toggleAccountDropdown()"
+            >
+              Recomandările Mele
+            </a>
             <button
               (click)="signOut()"
               class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"

@@ -53,6 +53,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CartPopUpComponent } from './components/cart-pop-up/cart-pop-up.component';
+import { ProgressBarModule } from 'primeng/progressbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -111,6 +112,7 @@ import { CartPopUpComponent } from './components/cart-pop-up/cart-pop-up.compone
     PaginatorModule,
     FormsModule,
     RadioButtonModule,
+    ProgressBarModule,
   ],
   providers: [
     {
