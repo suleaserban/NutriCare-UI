@@ -17,6 +17,10 @@ export class Question1Component implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.quizzService.getProgress().subscribe((progress) => {
+      this.currentProgress = progress;
+    });
+
     this.updateProgress();
   }
 
@@ -26,8 +30,7 @@ export class Question1Component implements OnInit {
       urlSegments.length > 0
         ? +urlSegments[urlSegments.length - 1].path.replace('question', '')
         : 0;
-    this.currentProgress =
-      this.quizzService.getProgressForQuestion(questionNumber);
+    this.quizzService.setCurrentQuestionIndex(questionNumber);
   }
 
   toSorryComponent() {

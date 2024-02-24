@@ -1,35 +1,54 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuizzService } from 'src/app/services/quizz service/quizz.service';
 
 @Component({
   selector: 'app-question15',
   templateUrl: './question15.component.html',
-  styleUrls: ['./question15.component.css']
+  styleUrls: ['./question15.component.css'],
 })
 export class Question15Component {
-  constructor( 
+  currentProgress?: number;
+  constructor(
     private router: Router,
-    private quizzService: QuizzService
-    ) {}
+    private quizzService: QuizzService,
+    private route: ActivatedRoute
+  ) {}
 
-  toQ16(){
-    this.router.navigate(['/question16']); 
-     }
+  ngOnInit() {
+    this.quizzService.getProgress().subscribe((progress) => {
+      this.currentProgress = progress;
+    });
 
-     toQ17Vegan(){
-      this.quizzService.setIsVegan(true);
-      this.router.navigate(['/question17']); 
+    this.updateProgress();
+  }
 
-      //aici tre sa adaugi factor vitamina b12 direct
-     }
+  updateProgress() {
+    const urlSegments = this.route.snapshot.url;
+    const questionNumber =
+      urlSegments.length > 0
+        ? +urlSegments[urlSegments.length - 1].path.replace('question', '')
+        : 0;
+    this.quizzService.setCurrentQuestionIndex(questionNumber);
+  }
 
-     toQ16Vegetarian(){
-      this.quizzService.setIsVegetarian(true);
-      this.router.navigate(['/question16']); 
-     }
-   
-     toSorryComponent(){
-       this.router.navigate(['/sorry']); 
-     }
+  toQ16() {
+    this.router.navigate(['/question16']);
+  }
+
+  toQ17Vegan() {
+    this.quizzService.setIsVegan(true);
+    this.router.navigate(['/question17']);
+
+    //aici tre sa adaugi factor vitamina b12 direct
+  }
+
+  toQ16Vegetarian() {
+    this.quizzService.setIsVegetarian(true);
+    this.router.navigate(['/question16']);
+  }
+
+  toSorryComponent() {
+    this.router.navigate(['/sorry']);
+  }
 }

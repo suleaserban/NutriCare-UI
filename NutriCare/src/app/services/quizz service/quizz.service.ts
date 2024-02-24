@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,18 +11,37 @@ export class QuizzService {
   private isVegetarian: boolean = false;
   private currentQuestionIndex: number = 0;
   private totalQuestions = 31;
-
+  private progress = new BehaviorSubject<number>(0);
   constructor() {}
 
   setCurrentQuestionIndex(index: number) {
     this.currentQuestionIndex = index;
+    this.animateProgress(index);
   }
 
-  getProgressForQuestion(questionNumber: number): number {
-    this.setCurrentQuestionIndex(questionNumber);
-    return Math.round((questionNumber / this.totalQuestions) * 100);
+  private animateProgress(targetIndex: number) {
+    const targetProgress = Math.round(
+      (targetIndex / this.totalQuestions) * 100
+    );
+    const currentProgress = this.progress.getValue();
+    const step = targetProgress > currentProgress ? 1 : -1;
+
+    const interval = setInterval(() => {
+      let nextProgress = this.progress.getValue() + step;
+      if (
+        (step > 0 && nextProgress >= targetProgress) ||
+        (step < 0 && nextProgress <= targetProgress)
+      ) {
+        nextProgress = targetProgress;
+        clearInterval(interval);
+      }
+      this.progress.next(nextProgress);
+    }, 20);
   }
 
+  getProgress(): Observable<number> {
+    return this.progress.asObservable();
+  }
   getCurrentQuestionIndex(): number {
     return this.currentQuestionIndex;
   }

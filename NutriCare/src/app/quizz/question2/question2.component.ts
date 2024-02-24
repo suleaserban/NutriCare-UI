@@ -16,6 +16,10 @@ export class Question2Component {
   ) {}
 
   ngOnInit() {
+    this.quizzService.getProgress().subscribe((progress) => {
+      this.currentProgress = progress;
+    });
+
     this.updateProgress();
   }
 
@@ -25,8 +29,7 @@ export class Question2Component {
       urlSegments.length > 0
         ? +urlSegments[urlSegments.length - 1].path.replace('question', '')
         : 0;
-    this.currentProgress =
-      this.quizzService.getProgressForQuestion(questionNumber);
+    this.quizzService.setCurrentQuestionIndex(questionNumber);
   }
 
   toQ3B() {
