@@ -58,7 +58,7 @@ export class MyRecoComponent implements OnInit {
 
   scheduleAppointment() {
     this.closeModal();
-    this.router.navigate(['/schedule-appointment']);
+    this.router.navigate(['/my-appointments']);
   }
 
   finalizeOrder() {
