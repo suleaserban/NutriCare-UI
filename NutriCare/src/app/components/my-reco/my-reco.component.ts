@@ -5,6 +5,7 @@ import { UserScoreDTO } from '../../models/userScoreDTO';
 import { ProductDTO } from 'src/app/models/productDTO';
 import { ProductService } from 'src/app/services/product service/product.service';
 import { forkJoin, of, switchMap } from 'rxjs';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-reco',
@@ -14,12 +15,14 @@ import { forkJoin, of, switchMap } from 'rxjs';
 export class MyRecoComponent implements OnInit {
   constructor(
     private userScoreService: UserScoreService,
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
   ) {}
 
   recommendedProducts!: ProductDTO[];
   selectedProduct: ProductDTO = <ProductDTO>{};
   showModal = false;
+  showConfirmationModal: boolean = false;
 
   ngOnInit(): void {
     let id = localStorage.getItem('id');
@@ -48,7 +51,20 @@ export class MyRecoComponent implements OnInit {
   closeModal(): void {
     this.showModal = false;
   }
-  goToShoppingCart() {}
+
+  goToShoppingCart() {
+    this.showConfirmationModal = true;
+  }
+
+  scheduleAppointment() {
+    this.closeModal();
+    this.router.navigate(['/schedule-appointment']);
+  }
+
+  finalizeOrder() {
+    this.closeModal();
+    this.router.navigate(['/checkout']);
+  }
 
   productImageUrls: { [key: number]: string } = {
     //Ashwaganda
