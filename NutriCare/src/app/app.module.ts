@@ -55,6 +55,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { CartPopUpComponent } from './components/cart-pop-up/cart-pop-up.component';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { MyAppointmentsComponent } from './components/my-appointments/my-appointments.component';
+import { CalendarModule } from 'primeng/calendar';
+import { DialogModule } from 'primeng/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -115,6 +118,8 @@ import { MyAppointmentsComponent } from './components/my-appointments/my-appoint
     FormsModule,
     RadioButtonModule,
     ProgressBarModule,
+    CalendarModule,
+    DialogModule,
   ],
   providers: [
     {

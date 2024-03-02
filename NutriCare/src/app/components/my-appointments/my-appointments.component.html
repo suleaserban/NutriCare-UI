@@ -1,1 +1,132 @@
 <app-navbar></app-navbar>
+<div class="container mx-auto mt-16">
+  <h2 class="text-center text-3xl font-bold mb-8">Programările mele</h2>
+
+  <div *ngIf="appointments && appointments.length">
+    <div class="overflow-x-auto">
+      <table class="min-w-full text-sm divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th
+              scope="col"
+              class="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Data și ora
+            </th>
+            <th
+              scope="col"
+              class="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Doctor
+            </th>
+            <th
+              scope="col"
+              class="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Status
+            </th>
+            <th
+              scope="col"
+              class="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Sumar
+            </th>
+            <th
+              scope="col"
+              class="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
+            >
+              Acțiuni
+            </th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr *ngFor="let appointment of appointments">
+            <td class="px-6 py-4 whitespace-nowrap">
+              {{ appointment.dataProgramare | date : "medium" }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              Dr. {{ appointment.doctorNume }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              {{ appointment.status || "N/A" }}
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              {{ appointment.sumar || "N/A" }}
+            </td>
+
+            <td class="px-6 py-4 whitespace-nowrap">
+              <a
+                href="#"
+                (click)="redirectToZoomMeet(appointment)"
+                class="text-green-600 hover:text-green-900"
+              >
+                Spre sedinta
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template *ngIf="!appointments">
+    <div class="text-center py-6">
+      <p>Nu aveți nicio programare. Adăugați una nouă!</p>
+      <button
+        class="mt-4 px-4 py-2 rounded-md bg-green-500 text-white hover:bg-green-700 focus:outline-none"
+        (click)="toggleAddAppointment()"
+      >
+        Adaugă Programare
+      </button>
+    </div>
+  </ng-template>
+
+  <div class="text-center mt-4">
+    <button
+      class="px-4 py-2 rounded-md bg-green-500 text-white hover:bg-green-700 focus:outline-none"
+      (click)="toggleAddAppointment()"
+    >
+      {{ displayModal ? "Anulează" : "Adaugă Programare" }}
+    </button>
+  </div>
+
+  <p-dialog
+    header="Adaugă Programare"
+    [(visible)]="displayModal"
+    [modal]="true"
+    [style]="{ width: '50vw' }"
+  >
+    <form [formGroup]="appointmentForm" (ngSubmit)="addAppointment()">
+      <div class="flex flex-col items-center p-4">
+        <label
+          for="doctorId"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Alegeți doctorul:</label
+        >
+        <select formControlName="doctorId" class="mb-4">
+          <option *ngFor="let doctor of doctors" [ngValue]="doctor.id">
+            {{ doctor.nume }}
+          </option>
+        </select>
+
+        <label
+          for="appointmentDate"
+          class="block mb-2 text-sm font-medium text-gray-900"
+          >Data și ora:</label
+        >
+        <input
+          type="datetime-local"
+          formControlName="appointmentDate"
+          class="mb-4"
+        />
+
+        <button
+          type="submit"
+          class="px-4 py-2 rounded-md bg-green-500 text-white hover:bg-green-700 focus:outline-none"
+        >
+          Programează-te
+        </button>
+      </div>
+    </form>
+  </p-dialog>
+</div>
