@@ -4,7 +4,8 @@ export interface Appointment {
   doctorNume?: string;
   userId?: number;
   userNume?: string;
-  dataProgramare?: Date | string;
+  appointmentDate?: Date | string;
   status?: string;
-  sumar?: string;
+  summary?: string;
+  link?: string;
 }

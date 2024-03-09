@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Appointment } from 'src/app/models/appointmentDTO';
@@ -23,5 +23,17 @@ export class AppointmentService {
       `${this.baseUrl}/add-appointment`,
       appointment
     );
+  }
+
+  getAvailableAppointmentTimes(
+    doctorId: number,
+    date: string
+  ): Observable<string[]> {
+    const url = `${this.baseUrl}/available-times`;
+    let params = new HttpParams()
+      .set('doctorId', doctorId.toString())
+      .set('date', date);
+
+    return this.http.get<string[]>(url, { params });
   }
 }

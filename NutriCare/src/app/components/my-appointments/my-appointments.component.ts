@@ -20,6 +20,9 @@ export class MyAppointmentsComponent implements OnInit {
   appointmentDate?: Date;
   userId?: number;
   displayModal: boolean = false;
+  selectedDate?: string;
+  availableTimes: string[] = [];
+  selectedTimeSlot: string | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -50,13 +53,14 @@ export class MyAppointmentsComponent implements OnInit {
   }
 
   addAppointment(): void {
-    if (this.appointmentForm.valid) {
+    if (this.appointmentForm.valid && this.selectedTimeSlot) {
       const formValue = this.appointmentForm.value;
+      const dateTime = `${formValue.appointmentDate}T${this.selectedTimeSlot}:00`;
 
       const newAppointment: Appointment = {
         doctorId: formValue.doctorId!,
         userId: this.userId!,
-        dataProgramare: formValue.appointmentDate,
+        appointmentDate: dateTime,
       };
 
       this.appointmentService.addAppointment(newAppointment).subscribe({
@@ -84,7 +88,30 @@ export class MyAppointmentsComponent implements OnInit {
     );
   }
 
-  redirectToZoomMeet(appointment: Appointment): void {
-    this.router.navigate(['/zoom-meet']);
+  openMeetingLink(meetingLink: string): void {
+    window.open(meetingLink, '_blank');
+  }
+
+  onDoctorAndDateChange(): void {
+    const doctorId = this.appointmentForm.get('doctorId')?.value;
+    const appointmentDate = this.appointmentForm.get('appointmentDate')?.value;
+
+    if (doctorId && appointmentDate) {
+      this.appointmentService
+        .getAvailableAppointmentTimes(doctorId, appointmentDate)
+        .subscribe(
+          (times) => {
+            this.availableTimes = times;
+            this.selectedTimeSlot = '';
+          },
+          (error) => {
+            console.error('Error fetching available times', error);
+          }
+        );
+    }
+  }
+
+  selectTimeSlot(time: string): void {
+    this.selectedTimeSlot = time;
   }
 }

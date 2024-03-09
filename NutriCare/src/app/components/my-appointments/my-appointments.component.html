@@ -42,7 +42,7 @@
         <tbody class="bg-white divide-y divide-gray-200">
           <tr *ngFor="let appointment of appointments">
             <td class="px-6 py-4 whitespace-nowrap">
-              {{ appointment.dataProgramare | date : "medium" }}
+              {{ appointment.appointmentDate | date : "medium" }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
               Dr. {{ appointment.doctorNume }}
@@ -51,13 +51,12 @@
               {{ appointment.status || "N/A" }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              {{ appointment.sumar || "N/A" }}
+              {{ appointment.summary || "N/A" }}
             </td>
 
             <td class="px-6 py-4 whitespace-nowrap">
               <a
-                href="#"
-                (click)="redirectToZoomMeet(appointment)"
+                (click)="openMeetingLink(appointment.link!)"
                 class="text-green-600 hover:text-green-900"
               >
                 Spre sedinta
@@ -91,7 +90,7 @@
   </div>
 
   <p-dialog
-    header="Adaugă Programare"
+    header="Programeaza-te"
     [(visible)]="displayModal"
     [modal]="true"
     [style]="{ width: '50vw' }"
@@ -101,10 +100,14 @@
         <label
           for="doctorId"
           class="block mb-2 text-sm font-medium text-gray-900"
-          >Alegeți doctorul:</label
+          >Selecteaza doctor:</label
         >
-        <select formControlName="doctorId" class="mb-4">
-          <option *ngFor="let doctor of doctors" [ngValue]="doctor.id">
+        <select
+          formControlName="doctorId"
+          (change)="onDoctorAndDateChange()"
+          class="mb-4"
+        >
+          <option *ngFor="let doctor of doctors" [value]="doctor.id">
             {{ doctor.nume }}
           </option>
         </select>
@@ -112,20 +115,37 @@
         <label
           for="appointmentDate"
           class="block mb-2 text-sm font-medium text-gray-900"
-          >Data și ora:</label
+          >Alege Data:</label
         >
         <input
-          type="datetime-local"
+          type="date"
           formControlName="appointmentDate"
+          (change)="onDoctorAndDateChange()"
           class="mb-4"
         />
 
+        <div class="time-slots-container mb-2">
+          <button
+            *ngFor="let time of availableTimes"
+            type="button"
+            pButton
+            [ngClass]="{
+              'time-slot': true,
+              selected: time === selectedTimeSlot
+            }"
+            (click)="selectTimeSlot(time)"
+          >
+            {{ time }}
+          </button>
+        </div>
+
         <button
           type="submit"
-          class="px-4 py-2 rounded-md bg-green-500 text-white hover:bg-green-700 focus:outline-none"
-        >
-          Programează-te
-        </button>
+          pButton
+          label="Programeaza-te"
+          icon="pi pi-check"
+          class="p-button-rounded p-button-success"
+        ></button>
       </div>
     </form>
   </p-dialog>
