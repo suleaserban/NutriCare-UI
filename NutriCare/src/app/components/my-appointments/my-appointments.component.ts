@@ -65,16 +65,20 @@ export class MyAppointmentsComponent implements OnInit {
 
       this.appointmentService.addAppointment(newAppointment).subscribe({
         next: (appointment) => {
-          console.log('Programare adăugată cu succes', appointment);
+          console.log('Programare adaugata cu succes', appointment);
           this.appointments.push(appointment);
           this.displayModal = false;
           this.appointmentForm.reset();
+          this.loadUserAppointments();
+          this.selectedTimeSlot = '';
+          this.availableTimes = [];
         },
         error: (error) => {
-          console.error('Eroare la adăugarea programării', error);
+          console.error('Eroare la adaugarea programarii', error);
         },
       });
     }
+    this.toggleAddAppointment();
   }
 
   loadUserAppointments(): void {
