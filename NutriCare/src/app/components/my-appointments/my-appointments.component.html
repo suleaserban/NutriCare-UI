@@ -1,7 +1,12 @@
 <app-navbar></app-navbar>
 <div class="container mx-auto mt-16">
   <h2 class="text-center text-3xl font-bold mb-8">Programările mele</h2>
-
+  <div *ngIf="!appointments.length">
+    <p class="text-center text-gray-600">
+      Momentan nu aveți nicio programare adăugată, dar vă puteți crea una cu
+      unul dintre doctorii nostri specialisti .
+    </p>
+  </div>
   <div *ngIf="appointments && appointments.length">
     <div class="overflow-x-auto">
       <table class="min-w-full text-sm divide-y divide-gray-200">
@@ -68,47 +73,43 @@
     </div>
   </div>
 
-  <ng-template *ngIf="!appointments">
-    <div class="text-center py-6">
-      <p>Nu aveți nicio programare. Adăugați una nouă!</p>
-      <button
-        class="mt-4 px-4 py-2 rounded-md bg-green-500 text-white hover:bg-green-700 focus:outline-none"
-        (click)="toggleAddAppointment()"
-      >
-        Adaugă Programare
-      </button>
-    </div>
-  </ng-template>
-
   <div class="text-center mt-4">
     <button
       class="px-4 py-2 rounded-md bg-green-500 text-white hover:bg-green-700 focus:outline-none"
       (click)="toggleAddAppointment()"
     >
-      {{ displayModal ? "Anulează" : "Adaugă Programare" }}
+      {{ "Adaugă Programare" }}
     </button>
   </div>
 
   <p-dialog
-    header="Programeaza-te"
+    header="Adaugă programare"
     [(visible)]="displayModal"
     [modal]="true"
-    [style]="{ width: '50vw' }"
+    [style]="{ width: '50vw', 'max-width': '500px' }"
   >
+    <button
+      type="button"
+      (click)="toggleAddAppointment()"
+      class="close-button-styles"
+    >
+      <i class="fas fa-times"></i>
+    </button>
     <form [formGroup]="appointmentForm" (ngSubmit)="addAppointment()">
       <div class="flex flex-col items-center p-4">
         <label
           for="doctorId"
           class="block mb-2 text-sm font-medium text-gray-900"
-          >Selecteaza doctor:</label
+          >Selectează Doctor:</label
         >
         <select
           formControlName="doctorId"
           (change)="onDoctorAndDateChange()"
-          class="mb-4"
+          class="block px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 mb-4"
         >
-          <option *ngFor="let doctor of doctors" [value]="doctor.id">
-            {{ doctor.nume }}
+          <option value="" disabled selected>Selectați un doctor</option>
+          <option *ngFor="let doctor of doctors" [ngValue]="doctor.id">
+            Dr. {{ doctor.nume }} {{ doctor.prenume }}
           </option>
         </select>
 
@@ -121,7 +122,15 @@
           type="date"
           formControlName="appointmentDate"
           (change)="onDoctorAndDateChange()"
-          class="mb-4"
+          [min]="minDate"
+          class="block px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 mb-4"
+          required
+          style="
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+          "
         />
 
         <div class="time-slots-container mb-2">
@@ -142,7 +151,7 @@
           type="submit"
           class="px-4 py-2 rounded-md bg-green-500 text-white hover:bg-green-700 focus:outline-none"
         >
-          Programeaza-te
+          Programează-te
         </button>
       </div>
     </form>

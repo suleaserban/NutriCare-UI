@@ -29,3 +29,24 @@
   justify-content: center;
   gap: 10px;
 }
+.centered .p-dialog-header {
+  justify-content: center;
+  text-align: center;
+}
+
+:host ::ng-deep .p-dialog .p-dialog-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.close-button-styles {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

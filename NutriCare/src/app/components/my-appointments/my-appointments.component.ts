@@ -23,6 +23,7 @@ export class MyAppointmentsComponent implements OnInit {
   selectedDate?: string;
   availableTimes: string[] = [];
   selectedTimeSlot: string | null = null;
+  minDate!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -40,6 +41,7 @@ export class MyAppointmentsComponent implements OnInit {
     this.userId = parseInt(localStorage.getItem('id')!);
     this.loadUserAppointments();
     this.loadDoctors();
+    this.minDate = new Date().toISOString().split('T')[0];
   }
 
   loadDoctors(): void {
