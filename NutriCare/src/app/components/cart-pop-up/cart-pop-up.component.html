@@ -1,5 +1,9 @@
 <div class="p-6 bg-white shadow-xl rounded-lg">
-  <ul role="list" class="divide-y divide-gray-200">
+  <ul
+    *ngIf="shoppingCart?.items?.length ?? 0"
+    role="list"
+    class="divide-y divide-gray-200"
+  >
     <li
       *ngFor="let item of shoppingCart?.items"
       class="py-4 flex justify-between items-center"
@@ -41,7 +45,14 @@
     </li>
   </ul>
 
-  <div class="border-t border-gray-200 pt-4 mt-4">
+  <div class="text-center my-4" *ngIf="!shoppingCart?.items?.length">
+    <p class="text-gray-900">Nu aveți produse în coș.</p>
+  </div>
+
+  <div
+    *ngIf="shoppingCart?.items?.length ?? 0"
+    class="border-t border-gray-200 pt-4 mt-4"
+  >
     <div class="flex justify-between items-center mb-4">
       <p class="text-base font-medium text-gray-900">Subtotal</p>
       <p class="text-base font-medium text-gray-900">
