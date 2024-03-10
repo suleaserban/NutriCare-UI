@@ -57,6 +57,9 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { MyAppointmentsComponent } from './components/my-appointments/my-appointments.component';
 import { CalendarModule } from 'primeng/calendar';
 import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { AddToCartInterceptor } from './http.interceptor';
 
 @NgModule({
   declarations: [
@@ -120,14 +123,18 @@ import { DialogModule } from 'primeng/dialog';
     ProgressBarModule,
     CalendarModule,
     DialogModule,
+    ToastModule,
   ],
   providers: [
+    MessageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true,
     },
+    { provide: HTTP_INTERCEPTORS, useClass: AddToCartInterceptor, multi: true },
   ],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

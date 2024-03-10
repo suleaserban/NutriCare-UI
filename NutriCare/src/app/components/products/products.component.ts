@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { Filter } from 'src/app/models/filters.model';
 import { ProductDTO } from 'src/app/models/productDTO';
 import { CartService } from 'src/app/services/cart service/cart.service';
