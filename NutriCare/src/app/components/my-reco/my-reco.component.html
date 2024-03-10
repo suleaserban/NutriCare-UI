@@ -24,12 +24,24 @@
             {{ product.descriere }}
           </p>
         </div>
-        <button
-          (click)="openModal(product)"
-          class="bg-green-500 hover:bg-green-600 text-white font-medium rounded-md text-sm px-4 py-2 mt-4 w-full"
-        >
-          Detalii
-        </button>
+        <div class="flex flex-col space-y-2 mt-auto">
+          <p class="text-gray-800">
+            <strong>{{ product.pret }} ron/lună</strong>
+          </p>
+          <button
+            (click)="openModal(product); $event.stopPropagation()"
+            class="text-gray-800 bg-white hover:bg-gray-800 hover:text-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 font-medium rounded-lg text-xs px-2 py-1 transition ease-in duration-200 text-center"
+          >
+            Vezi detalii
+          </button>
+
+          <button
+            (click)="addToCart(product)"
+            class="text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 font-medium rounded-lg text-xs px-2 py-1 transition ease-in duration-200 text-center"
+          >
+            Adaugă în coș
+          </button>
+        </div>
       </div>
     </div>
     <div class="flex justify-center mt-8 mb-4">
@@ -119,9 +131,12 @@
             Confirmare comandă
           </h3>
           <div class="mt-2">
-            <p class="text-sm text-gray-500">
-              Doriți să continuați cu finalizarea comenzii sau să programați o
-              întâlnire cu doctorul?
+            <p class="text-sm text-gray-500 mt-4 mb-4">
+              În cazul în care nu sunteți complet încrezător în recomandarea
+              algoritmului nostru, vă oferim posibilitatea de a vă programa la o
+              întâlnire online cu unul dintre medicii noștri nutriționiști.<br />
+              Doriți să continuați cu finalizarea comenzii sau preferați să
+              programați o întâlnire cu doctorul?
             </p>
           </div>
         </div>

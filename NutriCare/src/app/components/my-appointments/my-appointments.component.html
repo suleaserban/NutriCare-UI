@@ -88,13 +88,6 @@
     [modal]="true"
     [style]="{ width: '50vw', 'max-width': '500px' }"
   >
-    <button
-      type="button"
-      (click)="toggleAddAppointment()"
-      class="close-button-styles"
-    >
-      <i class="fas fa-times"></i>
-    </button>
     <form [formGroup]="appointmentForm" (ngSubmit)="addAppointment()">
       <div class="flex flex-col items-center p-4">
         <label

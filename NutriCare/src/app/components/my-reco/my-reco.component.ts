@@ -6,6 +6,7 @@ import { ProductDTO } from 'src/app/models/productDTO';
 import { ProductService } from 'src/app/services/product service/product.service';
 import { forkJoin, of, switchMap } from 'rxjs';
 import { Route, Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart service/cart.service';
 
 @Component({
   selector: 'app-my-reco',
@@ -16,17 +17,19 @@ export class MyRecoComponent implements OnInit {
   constructor(
     private userScoreService: UserScoreService,
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {}
 
   recommendedProducts!: ProductDTO[];
   selectedProduct: ProductDTO = <ProductDTO>{};
   showModal = false;
   showConfirmationModal: boolean = false;
+  userId?: number;
 
   ngOnInit(): void {
     let id = localStorage.getItem('id');
-
+    this.userId = parseInt(localStorage.getItem('id')!);
     this.userScoreService
       .getTopUserScores(parseInt(id!))
       .pipe(
@@ -64,6 +67,13 @@ export class MyRecoComponent implements OnInit {
   finalizeOrder() {
     this.closeModal();
     this.router.navigate(['/checkout']);
+  }
+
+  addToCart(product: ProductDTO) {
+    this.cartService.addItem(this.userId!, product.id).subscribe({
+      next: () => {},
+      error: (error) => console.error('Error:', error),
+    });
   }
 
   productImageUrls: { [key: number]: string } = {
