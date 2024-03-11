@@ -36,4 +36,14 @@ export class AppointmentService {
 
     return this.http.get<string[]>(url, { params });
   }
+
+  updateAppointmentStatus(
+    appointmentId: number,
+    status: string
+  ): Observable<Appointment> {
+    return this.http.put<Appointment>(
+      `${this.baseUrl}/${appointmentId}/status`,
+      { status }
+    );
+  }
 }

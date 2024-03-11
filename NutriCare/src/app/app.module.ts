@@ -60,6 +60,8 @@ import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { AddToCartInterceptor } from './http.interceptor';
+import { DoctorDashboardComponent } from './components/doctor-components/doctor-dashboard/doctor-dashboard.component';
+import { SimplifiedNavbarComponent } from './components/doctor-components/simplified-navbar/simplified-navbar.component';
 
 @NgModule({
   declarations: [
@@ -106,6 +108,8 @@ import { AddToCartInterceptor } from './http.interceptor';
     CheckoutComponent,
     CartPopUpComponent,
     MyAppointmentsComponent,
+    DoctorDashboardComponent,
+    SimplifiedNavbarComponent,
   ],
   imports: [
     BrowserModule,

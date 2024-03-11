@@ -4,6 +4,8 @@ import { AuthService } from '../../services/auth service/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { UserService } from 'src/app/services/user service/user.service';
+import { Role } from 'src/app/models/role.model';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,11 @@ export class LoginComponent {
   ngOnInit() {
     localStorage.removeItem('token');
   }
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   onLogin(): void {
     const email = this.loginForm.get('email')?.value;
@@ -33,6 +39,14 @@ export class LoginComponent {
           localStorage.setItem('token', response.token);
           const decoded: any = jwtDecode(response.token);
           localStorage.setItem('id', decoded.id);
+          this.userService
+            .getUserRoleById(decoded.id)
+            .subscribe((role: Role) => {
+              if (role === 'DOCTOR') {
+                this.router.navigate(['/doctor-dashboard']);
+              }
+              return;
+            });
           this.router.navigate(['/home']);
         },
         () => {}

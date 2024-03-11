@@ -40,6 +40,7 @@ import { AnalyzingAnswersComponent } from './components/analyzing-answers/analyz
 import { ProductsComponent } from './components/products/products.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MyAppointmentsComponent } from './components/my-appointments/my-appointments.component';
+import { DoctorDashboardComponent } from './components/doctor-components/doctor-dashboard/doctor-dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -220,6 +221,11 @@ const routes: Routes = [
   {
     path: 'my-appointments',
     component: MyAppointmentsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'doctor-dashboard',
+    component: DoctorDashboardComponent,
     canActivate: [AuthGuard],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
