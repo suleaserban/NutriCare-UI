@@ -46,4 +46,14 @@ export class AppointmentService {
       { status }
     );
   }
+
+  updateAppointmentSummary(
+    appointmentId: number,
+    summary: string
+  ): Observable<Appointment> {
+    return this.http.put<Appointment>(
+      `${this.baseUrl}/${appointmentId}/update-summary`,
+      { summary }
+    );
+  }
 }

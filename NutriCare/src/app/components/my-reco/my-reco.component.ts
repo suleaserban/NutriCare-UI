@@ -82,7 +82,7 @@ export class MyRecoComponent implements OnInit {
     //Carbune activ
     2: 'https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2F4deb4f30d3ceeb7ccf4ed7029328c64e.cdn.bubble.io%2Fd75%2Ff1694788113560x531922606777332000%2FCOLLAGE%25CC%2580NE%2520NEW%2520%25282%2529.png?w=256&h=&auto=compress&dpr=1&fit=max',
     //B Complex
-    3: '  https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2F4deb4f30d3ceeb7ccf4ed7029328c64e.cdn.bubble.io%2Fd75%2Ff1663953001242x319848638500417100%2FCOMPLEXE%2520SOLAIRE.png?w=256&h=&auto=compress&dpr=1&fit=max',
+    3: 'https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2F4deb4f30d3ceeb7ccf4ed7029328c64e.cdn.bubble.io%2Fd75%2Ff1663953001242x319848638500417100%2FCOMPLEXE%2520SOLAIRE.png?w=256&h=&auto=compress&dpr=1&fit=max',
     //Calciu
     4: 'https://d1muf25xaso8hp.cloudfront.net/https%3A%2F%2F4deb4f30d3ceeb7ccf4ed7029328c64e.cdn.bubble.io%2Fd75%2Ff1663952453482x405488024627920450%2FCALCIUM.png?w=256&h=&auto=compress&dpr=1&fit=max',
     //Zinc

@@ -61,11 +61,18 @@
 
             <td class="px-6 py-4 whitespace-nowrap">
               <a
+                *ngIf="
+                  appointment.status === 'Confirmată';
+                  else disabledMeetingLink
+                "
                 (click)="openMeetingLink(appointment.link!)"
-                class="text-green-600 hover:text-green-900"
+                class="text-green-600 hover:text-green-900 cursor-pointer"
               >
-                Spre sedinta
+                Spre ședință
               </a>
+              <ng-template #disabledMeetingLink>
+                <a class="meeting-link-disabled"> Spre ședință </a>
+              </ng-template>
             </td>
           </tr>
         </tbody>

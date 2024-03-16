@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { OrderDetailsDTO } from 'src/app/models/orderDetailsDTO';
 import { ShoppingCartDTO } from 'src/app/models/shopping-cartDTO.model';
 import { CartService } from 'src/app/services/cart service/cart.service';
+import { OrderServiceService } from 'src/app/services/order service/order-service.service';
 
 @Component({
   selector: 'app-checkout',
@@ -13,18 +15,19 @@ export class CheckoutComponent {
   userId?: number;
   cardType: string | null = null;
   paymentMethod: string = 'cash';
+  orderDetailsDTO: OrderDetailsDTO | undefined;
 
   checkoutForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     phoneNumber: new FormControl('', [
       Validators.required,
-      Validators.pattern('^\\+?[1-9]\\d{1,14}$'),
+      Validators.pattern('^(\\+\\d{1,3})?\\d{10}$'),
     ]),
     address: new FormControl('', Validators.required),
     county: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
-    codpostal: new FormControl('', Validators.required),
+    codPostal: new FormControl('', Validators.required),
     cardNumber: new FormControl(''),
     paymentMethod: new FormControl('cash'),
 
@@ -33,7 +36,10 @@ export class CheckoutComponent {
     cardName: new FormControl(''),
   });
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private orderService: OrderServiceService
+  ) {}
 
   ngOnInit(): void {
     this.userId = parseInt(localStorage.getItem('id')!);
@@ -77,7 +83,17 @@ export class CheckoutComponent {
     }
   }
   onSubmit() {
-    console.log(this.checkoutForm.value);
+    if (this.userId) {
+      const orderDetailsDTO = {
+        ...this.checkoutForm.value,
+      };
+      this.orderService.placeOrder(this.userId, orderDetailsDTO).subscribe({
+        next: (order) => {},
+        error: (error) => {
+          console.error('Error placing order:', error);
+        },
+      });
+    }
   }
 
   productImageUrls: { [key: number]: string } = {

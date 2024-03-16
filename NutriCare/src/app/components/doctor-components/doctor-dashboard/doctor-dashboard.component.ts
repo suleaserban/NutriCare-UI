@@ -10,6 +10,9 @@ import { AppointmentService } from 'src/app/services/appointment service/appoint
 export class DoctorDashboardComponent implements OnInit {
   doctorId?: number;
   appointments: Appointment[] = [];
+  displaySummaryModal = false;
+  currentAppointmentForSummary?: Appointment;
+  currentSummary!: string;
 
   constructor(private appointmentService: AppointmentService) {
     this.doctorId = parseInt(localStorage.getItem('id')!);
@@ -35,5 +38,27 @@ export class DoctorDashboardComponent implements OnInit {
     this.appointmentService
       .updateAppointmentStatus(appointment.id!, appointment.status!)
       .subscribe(() => {});
+  }
+
+  openSummaryModal(appointment: Appointment): void {
+    this.currentAppointmentForSummary = appointment;
+    this.currentSummary = appointment.summary || '';
+    this.displaySummaryModal = true;
+  }
+
+  updateSummary(): void {
+    if (this.currentAppointmentForSummary && this.currentSummary) {
+      this.appointmentService
+        .updateAppointmentSummary(
+          this.currentAppointmentForSummary.id!,
+          this.currentSummary
+        )
+        .subscribe(() => {
+          console.log(this.currentSummary);
+          this.displaySummaryModal = false;
+          this.currentAppointmentForSummary!.summary = this.currentSummary;
+          this.currentSummary = '';
+        });
+    }
   }
 }

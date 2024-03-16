@@ -52,3 +52,8 @@
 :host ::ng-deep .p-dialog {
   position: relative;
 }
+.meeting-link-disabled {
+  color: #d1d5db;
+  cursor: not-allowed;
+  text-decoration: none;
+}
