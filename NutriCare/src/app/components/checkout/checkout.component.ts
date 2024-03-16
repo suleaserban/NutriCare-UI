@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { OrderDetailsDTO } from 'src/app/models/orderDetailsDTO';
 import { ShoppingCartDTO } from 'src/app/models/shopping-cartDTO.model';
 import { CartService } from 'src/app/services/cart service/cart.service';
@@ -38,7 +39,8 @@ export class CheckoutComponent {
 
   constructor(
     private cartService: CartService,
-    private orderService: OrderServiceService
+    private orderService: OrderServiceService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -88,7 +90,9 @@ export class CheckoutComponent {
         ...this.checkoutForm.value,
       };
       this.orderService.placeOrder(this.userId, orderDetailsDTO).subscribe({
-        next: (order) => {},
+        next: (order) => {
+          this.router.navigate(['/thank-you']);
+        },
         error: (error) => {
           console.error('Error placing order:', error);
         },

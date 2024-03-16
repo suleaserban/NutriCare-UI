@@ -62,6 +62,8 @@ import { MessageService } from 'primeng/api';
 import { AddToCartInterceptor } from './http.interceptor';
 import { DoctorDashboardComponent } from './components/doctor-components/doctor-dashboard/doctor-dashboard.component';
 import { SimplifiedNavbarComponent } from './components/doctor-components/simplified-navbar/simplified-navbar.component';
+import { ThankYouComponent } from './components/thank-you/thank-you.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 
 @NgModule({
   declarations: [
@@ -110,6 +112,8 @@ import { SimplifiedNavbarComponent } from './components/doctor-components/simpli
     MyAppointmentsComponent,
     DoctorDashboardComponent,
     SimplifiedNavbarComponent,
+    ThankYouComponent,
+    MyOrdersComponent,
   ],
   imports: [
     BrowserModule,

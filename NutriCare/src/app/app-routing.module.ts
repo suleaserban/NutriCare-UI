@@ -41,6 +41,8 @@ import { ProductsComponent } from './components/products/products.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MyAppointmentsComponent } from './components/my-appointments/my-appointments.component';
 import { DoctorDashboardComponent } from './components/doctor-components/doctor-dashboard/doctor-dashboard.component';
+import { ThankYouComponent } from './components/thank-you/thank-you.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -226,6 +228,16 @@ const routes: Routes = [
   {
     path: 'doctor-dashboard',
     component: DoctorDashboardComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'thank-you',
+    component: ThankYouComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'my-orders',
+    component: MyOrdersComponent,
     canActivate: [AuthGuard],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
