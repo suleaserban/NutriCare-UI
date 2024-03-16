@@ -64,6 +64,8 @@ import { DoctorDashboardComponent } from './components/doctor-components/doctor-
 import { SimplifiedNavbarComponent } from './components/doctor-components/simplified-navbar/simplified-navbar.component';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { AdminComponentComponent } from './components/admin-component/admin-component.component';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -114,6 +116,7 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
     SimplifiedNavbarComponent,
     ThankYouComponent,
     MyOrdersComponent,
+    AdminComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -132,6 +135,7 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
     CalendarModule,
     DialogModule,
     ToastModule,
+    TooltipModule,
   ],
   providers: [
     MessageService,

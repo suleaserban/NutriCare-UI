@@ -1,11 +1,11 @@
-<app-navbar></app-navbar>
+<app-simplified-navbar></app-simplified-navbar>
 
 <div class="container mx-auto mt-16">
-  <h2 class="text-center text-3xl font-bold mb-8">Comenzile mele</h2>
+  <h2 class="text-center text-3xl font-bold mb-8">Toate comenzile</h2>
   <div *ngIf="!orders.length">
-    <p class="text-center text-gray-600">Momentan nu aveți nicio comandă.</p>
+    <p class="text-center text-gray-600">Momentan nu există nicio comandă.</p>
   </div>
-  <div *ngIf="orders.length">
+  <div *ngIf="orders.length" class="max-w-12xl mx-auto">
     <div class="overflow-x-auto">
       <table class="min-w-full text-sm divide-y divide-gray-200">
         <thead class="bg-gray-50">
@@ -18,13 +18,19 @@
             <th
               class="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
             >
+              Status
+            </th>
+            <th
+              class="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
+            >
               Produse
             </th>
             <th
               class="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
             >
-              Status
+              Adresa
             </th>
+
             <th
               class="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
             >
@@ -38,17 +44,23 @@
               {{ order.date | date : "dd-MM-yyyy" }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
+              <select
+                [(ngModel)]="order.status"
+                (change)="changeOrderStatus(order)"
+              >
+                <option value="PENDING">În pregătire</option>
+                <option value="DELIVERED">Livrată</option>
+                <option value="CANCELED">Anulată</option>
+              </select>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
               {{ order.productNames }}
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-              <ng-container [ngSwitch]="order.status">
-                <span *ngSwitchCase="'PENDING'">În pregătire</span>
-                <span *ngSwitchCase="'DELIVERED'">Livrată</span>
-                <span *ngSwitchCase="'CANCELED'">Anulată</span>
-                <span *ngSwitchDefault>{{ order.status }}</span>
-              </ng-container>
+              {{ order.adress }}
             </td>
-            <td class="px-6 py-4 whitespace-nowrap">{{ order.total }} ron</td>
+
+            <td class="px-6 py-4 whitespace-nowrap">{{ order.total }} lei</td>
           </tr>
         </tbody>
       </table>

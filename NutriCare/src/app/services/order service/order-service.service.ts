@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Order } from 'src/app/models/orderDTO';
@@ -17,5 +17,18 @@ export class OrderServiceService {
 
   getOrdersByUserId(userId: number): Observable<Order[]> {
     return this.http.get<Order[]>(`${this.apiUrl}/user/${userId}`);
+  }
+
+  getAllOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(`${this.apiUrl}/get-all-orders`);
+  }
+
+  updateOrderStatus(orderId: number, status: string): Observable<any> {
+    const params = new HttpParams().set('status', status);
+    return this.http.put(
+      `${this.apiUrl}/updateOrderStatus/${orderId}`,
+      {},
+      { params }
+    );
   }
 }

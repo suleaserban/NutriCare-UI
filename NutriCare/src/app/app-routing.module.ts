@@ -43,6 +43,7 @@ import { MyAppointmentsComponent } from './components/my-appointments/my-appoint
 import { DoctorDashboardComponent } from './components/doctor-components/doctor-dashboard/doctor-dashboard.component';
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
+import { AdminComponentComponent } from './components/admin-component/admin-component.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -238,6 +239,11 @@ const routes: Routes = [
   {
     path: 'my-orders',
     component: MyOrdersComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin-dashboard',
+    component: AdminComponentComponent,
     canActivate: [AuthGuard],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

@@ -13,6 +13,8 @@ import { Role } from 'src/app/models/role.model';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  errorToggle: boolean = false;
+
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
@@ -45,11 +47,16 @@ export class LoginComponent {
               if (role === 'DOCTOR') {
                 this.router.navigate(['/doctor-dashboard']);
               }
+              if (role === 'ADMIN') {
+                this.router.navigate(['/admin-dashboard']);
+              }
               return;
             });
           this.router.navigate(['/home']);
         },
-        () => {}
+        () => {
+          this.errorToggle = true;
+        }
       );
     }
   }

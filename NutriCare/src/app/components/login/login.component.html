@@ -1,32 +1,57 @@
 <div class="flex items-center justify-center min-h-screen bg-white">
   <div class="w-full max-w-md">
     <div class="mb-6 text-center">
-      <img class="mx-auto" src="assets/logo2.png" alt="NutriCare Logo" style="width: 150px; height: auto;">
+      <img
+        class="mx-auto"
+        src="assets/logo2.png"
+        alt="NutriCare Logo"
+        style="width: 150px; height: auto"
+      />
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="space-y-6">
       <div>
-        <label for="email" class="block text-sm font-medium text-gray-700">Adresa de email</label>
-        <input id="email" type="email" formControlName="email" required
-               class="w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400
-                      focus:outline-none focus:border-green-500 focus:ring-green-500">
+        <label for="email" class="block text-sm font-medium text-gray-700"
+          >Adresa de email</label
+        >
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          required
+          class="w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-green-500"
+        />
       </div>
       <div>
-        <label for="password" class="block text-sm font-medium text-gray-700">Parola</label>
-        <input id="password" type="password" formControlName="password" required
-               class="w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400
-                      focus:outline-none focus:border-green-500 focus:ring-green-500">
+        <label for="password" class="block text-sm font-medium text-gray-700"
+          >Parola</label
+        >
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          required
+          class="w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-green-500"
+        />
       </div>
+
       <div>
-        <button type="submit" [disabled]="!loginForm.valid"
-                class="w-full px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-md shadow-sm
-                       hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+        <button
+          type="submit"
+          [disabled]="!loginForm.valid"
+          class="w-full px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+        >
           Autentificare
         </button>
+      </div>
+      <div *ngIf="errorToggle" class="text-red-500 text-center mt-2">
+        Email sau parola greșită.
       </div>
     </form>
     <div class="mt-6 text-sm text-center text-gray-500">
       Nu ai cont?
-      <a href="#" class="text-green-600 hover:text-green-700">Înregistrează-te</a>
+      <button class="text-green-600 hover:text-green-700">
+        Înregistrează-te
+      </button>
     </div>
   </div>
 </div>
