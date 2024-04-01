@@ -1,0 +1,148 @@
+<div class="flex items-center justify-center min-h-screen bg-white">
+  <div class="w-full max-w-md">
+    <div class="mb-6 text-center">
+      <img
+        class="mx-auto"
+        src="assets/logo2.png"
+        alt="NutriCare Logo"
+        style="width: 150px; height: auto"
+      />
+    </div>
+    <button
+      (click)="backToLogin()"
+      class="mt-4 px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-md shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 mx-auto block"
+    >
+      <i class="fa fa-arrow-left"></i>
+    </button>
+    <form
+      [formGroup]="registrationForm"
+      (ngSubmit)="onRegister()"
+      class="space-y-6"
+    >
+      <div>
+        <label for="nume" class="block text-sm font-medium text-gray-700"
+          >Nume</label
+        >
+        <input
+          id="nume"
+          type="text"
+          formControlName="nume"
+          required
+          class="w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-green-500"
+        />
+      </div>
+      <div
+        *ngIf="
+          registrationForm.controls.nume.invalid &&
+          registrationForm.controls.nume.touched
+        "
+        class="text-red-500"
+      >
+        Numele este obligatoriu.
+      </div>
+
+      <div>
+        <label for="prenume" class="block text-sm font-medium text-gray-700"
+          >Prenume</label
+        >
+        <input
+          id="prenume"
+          type="text"
+          formControlName="prenume"
+          required
+          class="w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-green-500"
+        />
+      </div>
+
+      <div
+        *ngIf="
+          registrationForm.controls.prenume.invalid &&
+          registrationForm.controls.prenume.touched
+        "
+        class="text-red-500"
+      >
+        Prenumele este obligatoriu.
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700"
+          >Email</label
+        >
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          required
+          class="w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-green-500"
+        />
+      </div>
+
+      <div
+        *ngIf="
+          registrationForm.controls.email.invalid &&
+          registrationForm.controls.email.touched
+        "
+        class="text-red-500"
+      >
+        Introduceți o adresă de email validă.
+      </div>
+
+      <div>
+        <label for="parola" class="block text-sm font-medium text-gray-700"
+          >Parola</label
+        >
+        <input
+          id="parola"
+          type="password"
+          formControlName="parola"
+          required
+          class="w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-green-500"
+        />
+      </div>
+
+      <div
+        *ngIf="
+          registrationForm.controls.parola.invalid &&
+          registrationForm.controls.parola.touched
+        "
+        class="text-red-500"
+      >
+        Parola este obligatorie și trebuie să respecte criteriile de
+        complexitate.
+      </div>
+
+      <div>
+        <label for="varsta" class="block text-sm font-medium text-gray-700"
+          >Vârstă</label
+        >
+        <input
+          id="varsta"
+          type="number"
+          formControlName="varsta"
+          required
+          class="w-full px-3 py-2 border rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-green-500 focus:ring-green-500"
+        />
+      </div>
+
+      <div
+        *ngIf="
+          registrationForm.controls.varsta.invalid &&
+          registrationForm.controls.varsta.touched
+        "
+        class="text-red-500"
+      >
+        Vârsta este obligatorie și trebuie să fie un număr valid între 18 și 99.
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          [disabled]="!registrationForm.valid"
+          class="w-full px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+        >
+          Înregistrează-te
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

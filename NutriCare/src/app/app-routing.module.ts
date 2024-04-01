@@ -44,9 +44,11 @@ import { DoctorDashboardComponent } from './components/doctor-components/doctor-
 import { ThankYouComponent } from './components/thank-you/thank-you.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { AdminComponentComponent } from './components/admin-component/admin-component.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   {
     path: 'question1',
