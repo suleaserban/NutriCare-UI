@@ -5,6 +5,10 @@ import { Appointment } from 'src/app/models/appointmentDTO';
 import { DoctoriDTO } from 'src/app/models/doctoriDTO';
 import { AppointmentService } from 'src/app/services/appointment service/appointment.service';
 import { UserService } from 'src/app/services/user service/user.service';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
+
+(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-my-appointments',
@@ -13,8 +17,10 @@ import { UserService } from 'src/app/services/user service/user.service';
 })
 export class MyAppointmentsComponent implements OnInit {
   appointmentForm: FormGroup;
+  detailsForm: FormGroup;
   appointments: Appointment[] = [];
   isAddingAppointment = false;
+  displayDetailsModal: boolean = false;
   selectedDoctorId?: number;
   doctors: DoctoriDTO[] = [];
   appointmentDate?: Date;
@@ -31,6 +37,11 @@ export class MyAppointmentsComponent implements OnInit {
     private appointmentService: AppointmentService,
     private router: Router
   ) {
+    this.detailsForm = this.fb.group({
+      doctorNume: [{ value: '', disabled: true }],
+      appointmentDate: [{ value: '', disabled: true }],
+      summary: [{ value: '', disabled: true }],
+    });
     this.appointmentForm = this.fb.group({
       doctorId: ['', Validators.required],
       appointmentDate: ['', Validators.required],
@@ -119,5 +130,81 @@ export class MyAppointmentsComponent implements OnInit {
 
   selectTimeSlot(time: string): void {
     this.selectedTimeSlot = time;
+  }
+
+  openDetailsModal(appointment: Appointment): void {
+    let formattedDate = '';
+    if (
+      typeof appointment.appointmentDate === 'string' &&
+      appointment.appointmentDate
+    ) {
+      formattedDate = this.formatDate(appointment.appointmentDate);
+    } else {
+      formattedDate = 'Data indisponibilă';
+    }
+
+    this.detailsForm.setValue({
+      doctorNume: `Dr. ${appointment.doctorNume}`,
+      appointmentDate: formattedDate,
+      summary: appointment.summary || 'N/A',
+    });
+    this.displayDetailsModal = true;
+    this.displayModal = false;
+  }
+
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return date
+      ? `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
+      : 'Invalid date';
+  }
+
+  generatePdf(): void {
+    const docDefinition: any = {
+      content: [
+        { text: 'Nutricare S.R.L', style: 'title' },
+        { text: 'Recomandarea medicului', style: 'subtitle' },
+        { text: 'Detalii Programare', style: 'header' },
+        {
+          text: `Nume Doctor: ${this.detailsForm.get('doctorNume')?.value}`,
+          style: 'subheader',
+        },
+        {
+          text: `Data și Ora: ${
+            this.detailsForm.get('appointmentDate')?.value
+          }`,
+          style: 'subheader',
+        },
+        {
+          text: `Sumar: ${this.detailsForm.get('summary')?.value}`,
+          style: 'subheader',
+        },
+      ],
+      styles: {
+        title: {
+          fontSize: 18,
+          bold: true,
+          alignment: 'center',
+          margin: [0, 20, 0, 10],
+        },
+        subtitle: {
+          fontSize: 16,
+          italics: true,
+          alignment: 'center',
+          margin: [0, 20, 0, 10],
+        },
+        header: {
+          fontSize: 14,
+          bold: true,
+          margin: [0, 0, 5, 0],
+        },
+        subheader: {
+          fontSize: 12,
+          margin: [0, 0, 5, 0],
+        },
+      },
+    };
+
+    pdfMake.createPdf(docDefinition).download('detalii-programare.pdf');
   }
 }

@@ -1,5 +1,5 @@
 <div class="flex items-center justify-center min-h-screen bg-white">
-  <div class="w-full max-w-md">
+  <div class="w-full max-w-md p-8">
     <div class="mb-6 text-center">
       <img
         class="mx-auto"
@@ -8,16 +8,33 @@
         style="width: 150px; height: auto"
       />
     </div>
-    <button
-      (click)="backToLogin()"
-      class="mt-4 px-4 py-2 text-sm font-medium text-white bg-green-500 rounded-md shadow-sm hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 mx-auto block"
-    >
-      <i class="fa fa-arrow-left"></i>
-    </button>
+
+    <div class="text-center mb-8">
+      <button
+        (click)="backToLogin()"
+        class="flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-transparent border border-gray-300 rounded-md hover:bg-gray-100 focus:outline-none focus:border-green-500 focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="w-6 h-6 mr-2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+          />
+        </svg>
+        Înapoi la autentificare
+      </button>
+    </div>
     <form
       [formGroup]="registrationForm"
       (ngSubmit)="onRegister()"
-      class="space-y-6"
+      class="space-y-6 bg-white"
     >
       <div>
         <label for="nume" class="block text-sm font-medium text-gray-700"
@@ -107,8 +124,8 @@
         "
         class="text-red-500"
       >
-        Parola este obligatorie și trebuie să respecte criteriile de
-        complexitate.
+        Parola este obligatorie și trebuie să conțină între 5 și 20 de
+        caractere.
       </div>
 
       <div>

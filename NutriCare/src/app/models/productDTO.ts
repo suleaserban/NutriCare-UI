@@ -1,10 +1,10 @@
 export interface ProductDTO {
   id: number;
   beneficii: string;
-  contraIndicatii: string;
+  contra_indicatii: string;
   descriere: string;
   ingrediente: string;
-  modAdministrare: string;
+  mod_administrare: string;
   nume: string;
   producator: string;
   pret: number;
