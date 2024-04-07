@@ -14,6 +14,10 @@ export class UserService {
 
   constructor(private http: HttpClient, private quizzService: QuizzService) {}
 
+  getAllDoctors(): Observable<DoctoriDTO[]> {
+    return this.http.get<DoctoriDTO[]>(`${this.apiUrl}/get-all-doctors`);
+  }
+
   calculateUserScore(
     id: number,
     ponderiDto: any,
@@ -24,10 +28,6 @@ export class UserService {
       isVegan: isVegan,
     };
     return this.http.post(`${this.apiUrl}/${id}/calculate-scores`, requestBody);
-  }
-
-  getAllDoctors(): Observable<DoctoriDTO[]> {
-    return this.http.get<DoctoriDTO[]>(`${this.apiUrl}/get-all-doctors`);
   }
 
   getUserRoleById(id: number): Observable<Role> {

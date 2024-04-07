@@ -86,23 +86,17 @@ export class MyAppointmentsComponent implements OnInit {
           this.selectedTimeSlot = '';
           this.availableTimes = [];
         },
-        error: (error) => {
-          console.error('Eroare la adaugarea programarii', error);
-        },
       });
     }
     this.toggleAddAppointment();
   }
 
   loadUserAppointments(): void {
-    this.appointmentService.getUserAppointments(this.userId!).subscribe(
-      (appointments) => {
+    this.appointmentService
+      .getUserAppointments(this.userId!)
+      .subscribe((appointments) => {
         this.appointments = appointments;
-      },
-      (error) => {
-        console.error('Error fetching appointments', error);
-      }
-    );
+      });
   }
 
   openMeetingLink(meetingLink: string): void {
