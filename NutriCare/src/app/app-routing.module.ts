@@ -45,6 +45,7 @@ import { ThankYouComponent } from './components/thank-you/thank-you.component';
 import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { AdminComponentComponent } from './components/admin-component/admin-component.component';
 import { RegisterComponent } from './components/register/register.component';
+import { OurDoctorsComponent } from './components/our-doctors/our-doctors.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -246,6 +247,11 @@ const routes: Routes = [
   {
     path: 'admin-dashboard',
     component: AdminComponentComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'our-doctors',
+    component: OurDoctorsComponent,
     canActivate: [AuthGuard],
   },
   { path: '', redirectTo: 'login', pathMatch: 'full' },

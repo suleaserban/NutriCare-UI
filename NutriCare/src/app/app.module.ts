@@ -67,6 +67,7 @@ import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 import { AdminComponentComponent } from './components/admin-component/admin-component.component';
 import { TooltipModule } from 'primeng/tooltip';
 import { RegisterComponent } from './components/register/register.component';
+import { OurDoctorsComponent } from './components/our-doctors/our-doctors.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +120,7 @@ import { RegisterComponent } from './components/register/register.component';
     MyOrdersComponent,
     AdminComponentComponent,
     RegisterComponent,
+    OurDoctorsComponent,
   ],
   imports: [
     BrowserModule,

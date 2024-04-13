@@ -6,11 +6,25 @@
           <img class="h-24" src="assets/logo2.png" alt="NutriCare Logo" />
         </a>
         <a
+          routerLink="/home"
+          class="ml-6 text-gray-800 hover:text-gray-600 cursor-pointer"
+          [class.active-link]="currentUrl === '/home'"
+        >
+          Acasă
+        </a>
+        <a
           routerLink="/products"
           class="ml-6 text-gray-800 hover:text-gray-600 cursor-pointer"
           [class.active-link]="currentUrl === '/products'"
         >
           Produse
+        </a>
+        <a
+          routerLink="/our-doctors"
+          class="ml-6 text-gray-800 hover:text-gray-600 cursor-pointer"
+          [class.active-link]="currentUrl === '/our-doctors'"
+        >
+          Doctorii noștri
         </a>
       </div>
 
