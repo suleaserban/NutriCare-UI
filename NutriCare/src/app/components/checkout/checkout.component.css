@@ -45,3 +45,83 @@
 :host ::ng-deep .p-radiobutton-checked .p-radiobutton-box .p-radiobutton-icon {
   background-color: #a2d9a2;
 }
+.time-slot {
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 25px;
+  background-color: #f0f0f0;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.time-slot:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.time-slot.selected {
+  background-color: #22c55e;
+}
+
+.time-slot.unavailable {
+  background-color: #f8d7da;
+  cursor: not-allowed;
+}
+.time-slots-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.close-button-styles {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.close-button-styles {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+:host ::ng-deep .p-dialog {
+  position: relative;
+}
+.meeting-link-disabled {
+  color: #d1d5db;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+}

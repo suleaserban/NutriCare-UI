@@ -2,3 +2,27 @@
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+#app {
+  min-height: 100vh;
+  flex-direction: column;
+  display: flex;
+}
+
+main.flex-grow {
+  flex: 1;
+}
+
+app-footer {
+  flex-shrink: 0;
+}

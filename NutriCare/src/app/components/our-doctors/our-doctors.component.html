@@ -1,67 +1,80 @@
-<app-navbar></app-navbar>
-<div class="bg-white py-12">
-  <div class="container mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">
-      Doctorii noștri
-    </h2>
+<body>
+  <div id="app">
+    <header>
+      <app-navbar></app-navbar>
+    </header>
+    <main class="flex-grow">
+      <div class="bg-white py-12">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">
+            Doctorii noștri
+          </h2>
 
-    <div class="flex flex-wrap justify-center gap-10">
-      <div class="w-1/4">
-        <div
-          class="flex flex-col bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 p-5 text-center"
-          style="min-height: 450px"
-        >
-          <img
-            src="assets/doctor1.jpg"
-            alt="Dr. Mihail Popescu"
-            class="inline-block h-56 w-56 rounded-full object-cover mx-auto"
-          />
-          <h3 class="text-lg font-bold mt-4">Dr. Mihail Popescu</h3>
-          <p class="text-gray-600">
-            Cu peste douăzeci de ani de practică medicală, Dr. Mihail Popescu
-            este expert în nutriție clinică și diabetologie, oferind consiliere
-            avansată pentru optimizarea stilului de viață.
-          </p>
+          <div class="flex flex-wrap justify-center gap-10">
+            <div class="w-1/4">
+              <div
+                class="flex flex-col bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 p-5 text-center"
+                style="min-height: 450px"
+              >
+                <img
+                  src="assets/doctor1.jpg"
+                  alt="Dr. Mihail Popescu"
+                  class="inline-block h-56 w-56 rounded-full object-cover mx-auto"
+                  style="object-position: 30% 50%"
+                />
+                <h3 class="text-lg font-bold mt-4">Dr. Mihail Popescu</h3>
+                <p class="text-gray-600">
+                  Cu peste douăzeci de ani de practică medicală, Dr. Mihail
+                  Popescu este expert în nutriție clinică și diabetologie,
+                  oferind consiliere avansată pentru optimizarea stilului de
+                  viață.
+                </p>
+              </div>
+            </div>
+
+            <div class="w-1/4">
+              <div
+                class="flex flex-col bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 p-5 text-center"
+                style="min-height: 450px"
+              >
+                <img
+                  src="assets/doctor2.jpg"
+                  alt="Dr. Paula Vasilescu"
+                  class="inline-block h-56 w-56 rounded-full object-cover mx-auto"
+                  style="object-position: 40% 50%"
+                />
+                <h3 class="text-lg font-bold mt-4">Dr. Paula Vasilescu</h3>
+                <p class="text-gray-600">
+                  Specializată în nutriția sportivilor și wellness, Dr. Paula
+                  Vasilescu combină cele mai noi cercetări în dietetică cu
+                  abordări personalizate pentru fiecare pacient.
+                </p>
+              </div>
+            </div>
+
+            <div class="w-1/4">
+              <div
+                class="flex flex-col bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 p-5 text-center"
+                style="min-height: 450px"
+              >
+                <img
+                  src="assets/doctor3.jpg"
+                  alt="Dr. Ana Bojan"
+                  class="inline-block h-56 w-56 rounded-full object-cover mx-auto"
+                  style="object-position: 100% 50%"
+                />
+                <h3 class="text-lg font-bold mt-4">Dr. Ana Bojan</h3>
+                <p class="text-gray-600">
+                  Dr. Ana Bojan aduce o abordare inovatoare în nutriție,
+                  specializându-se în dietoterapie și nutriția pentru prevenția
+                  bolilor cronice.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="w-1/4">
-        <div
-          class="flex flex-col bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 p-5 text-center"
-          style="min-height: 450px"
-        >
-          <img
-            src="assets/doctor2.jpg"
-            alt="Dr. Paula Vasilescu"
-            class="inline-block h-56 w-56 rounded-full object-cover mx-auto"
-          />
-          <h3 class="text-lg font-bold mt-4">Dr. Paula Vasilescu</h3>
-          <p class="text-gray-600">
-            Specializată în nutriția sportivilor și wellness, Dr. Paula
-            Vasilescu combină cele mai noi cercetări în dietetică cu abordări
-            personalizate pentru fiecare pacient.
-          </p>
-        </div>
-      </div>
-
-      <div class="w-1/4">
-        <div
-          class="flex flex-col bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-transform hover:-translate-y-1 p-5 text-center"
-          style="min-height: 450px"
-        >
-          <img
-            src="assets/doctor3.jpg"
-            alt="Dr. Ana Bojan"
-            class="inline-block h-56 w-56 rounded-full object-cover mx-auto"
-          />
-          <h3 class="text-lg font-bold mt-4">Dr. Ana Bojan</h3>
-          <p class="text-gray-600">
-            Dr. Ana Bojan aduce o abordare inovatoare în nutriție,
-            specializându-se în dietoterapie și nutriția pentru prevenția
-            bolilor cronice.
-          </p>
-        </div>
-      </div>
-    </div>
+    </main>
+    <app-footer class="footer"></app-footer>
   </div>
-</div>
+</body>

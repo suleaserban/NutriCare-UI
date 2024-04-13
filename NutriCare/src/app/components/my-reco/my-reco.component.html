@@ -1,171 +1,183 @@
-<app-navbar></app-navbar>
-<div class="mt-16 px-4 md:px-0">
-  <h3 class="text-center text-2xl font-semibold my-4">
-    Recomandările noastre:
-  </h3>
-  <div class="container mx-auto">
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-    >
+<body>
+  <div id="app">
+    <header>
+      <app-navbar></app-navbar>
+    </header>
+    <main class="flex-grow">
+      <div class="mt-16 px-4 md:px-0">
+        <h3 class="text-center text-2xl font-semibold my-4">
+          Recomandările noastre:
+        </h3>
+        <div class="container mx-auto">
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          >
+            <div
+              *ngFor="let product of recommendedProducts"
+              class="bg-white rounded-lg border border-gray-200 shadow-md hover:shadow-2xl transition-all duration-300 p-6 flex flex-col hover:-translate-y-2"
+            >
+              <img
+                [src]="productImageUrls[product.id]"
+                alt="{{ product.nume }}"
+                class="h-48 w-full object-contain"
+              />
+              <div class="flex flex-col flex-grow">
+                <h5 class="text-lg font-semibold text-gray-800 mt-4">
+                  {{ product.nume }}
+                </h5>
+                <p class="text-gray-600 my-3 flex-grow">
+                  {{ product.descriere }}
+                </p>
+              </div>
+              <div class="flex flex-col space-y-2 mt-auto">
+                <p class="text-gray-800">
+                  <strong>{{ product.pret }} ron</strong>
+                </p>
+                <button
+                  (click)="openModal(product); $event.stopPropagation()"
+                  class="text-gray-800 bg-white hover:bg-gray-800 hover:text-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 font-medium rounded-lg text-xs px-2 py-1 transition ease-in duration-200 text-center"
+                >
+                  Vezi detalii
+                </button>
+
+                <button
+                  (click)="addToCart(product)"
+                  class="text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 font-medium rounded-lg text-xs px-2 py-1 transition ease-in duration-200 text-center"
+                >
+                  Adaugă în coș
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-center mt-8 mb-4">
+            <button
+              class="px-8 py-4 bg-white rounded-full border-2 border-gray-300 transition-colors duration-300 ease-in-out hover:border-green-500 text-gray-800 shadow-lg"
+              (click)="goToShoppingCart()"
+            >
+              Finalizează comanda
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div
-        *ngFor="let product of recommendedProducts"
-        class="bg-white rounded-lg border border-gray-200 shadow-md hover:shadow-2xl transition-all duration-300 p-6 flex flex-col hover:-translate-y-2"
+        *ngIf="showModal"
+        class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
+        id="my-modal"
       >
-        <img
-          [src]="productImageUrls[product.id]"
-          alt="{{ product.nume }}"
-          class="h-48 w-full object-contain"
-        />
-        <div class="flex flex-col flex-grow">
-          <h5 class="text-lg font-semibold text-gray-800 mt-4">
-            {{ product.nume }}
-          </h5>
-          <p class="text-gray-600 my-3 flex-grow">
-            {{ product.descriere }}
-          </p>
-        </div>
-        <div class="flex flex-col space-y-2 mt-auto">
-          <p class="text-gray-800">
-            <strong>{{ product.pret }} ron</strong>
-          </p>
-          <button
-            (click)="openModal(product); $event.stopPropagation()"
-            class="text-gray-800 bg-white hover:bg-gray-800 hover:text-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 font-medium rounded-lg text-xs px-2 py-1 transition ease-in duration-200 text-center"
-          >
-            Vezi detalii
-          </button>
-
-          <button
-            (click)="addToCart(product)"
-            class="text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 font-medium rounded-lg text-xs px-2 py-1 transition ease-in duration-200 text-center"
-          >
-            Adaugă în coș
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="flex justify-center mt-8 mb-4">
-      <button
-        class="px-8 py-4 bg-white rounded-full border-2 border-gray-300 transition-colors duration-300 ease-in-out hover:border-green-500 text-gray-800 shadow-lg"
-        (click)="goToShoppingCart()"
-      >
-        Finalizeaza comanda
-      </button>
-    </div>
-  </div>
-</div>
-
-<div
-  *ngIf="showModal"
-  class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full"
-  id="my-modal"
->
-  <div
-    class="relative top-20 mx-auto p-5 border w-full max-w-3xl shadow-lg rounded-md bg-white"
-  >
-    <div class="mt-3 text-center">
-      <h3 class="text-2xl leading-6 font-bold text-gray-900 mb-4">
-        {{ selectedProduct.nume }}
-      </h3>
-      <img
-        [src]="productImageUrls[selectedProduct.id]"
-        alt="{{ selectedProduct.nume }}"
-        class="mx-auto h-48 w-full object-contain"
-      />
-      <div class="mt-2 px-7 py-3 text-left">
-        <p class="text-base text-gray-500 mb-3">
-          {{ selectedProduct.descriere }}
-        </p>
-        <dl class="mb-4">
-          <div class="bg-gray-100 rounded-md p-3 mb-3">
-            <dt class="font-semibold text-gray-700">Beneficii:</dt>
-            <dd>{{ selectedProduct.beneficii }}</dd>
-          </div>
-          <div class="bg-gray-100 rounded-md p-3 mb-3">
-            <dt class="font-semibold text-gray-700">Contraindicații:</dt>
-            <dd>{{ selectedProduct.contra_indicatii }}</dd>
-          </div>
-          <div class="bg-gray-100 rounded-md p-3 mb-3">
-            <dt class="font-semibold text-gray-700">Ingrediente:</dt>
-            <dd>{{ selectedProduct.ingrediente }}</dd>
-          </div>
-          <div class="bg-gray-100 rounded-md p-3 mb-3">
-            <dt class="font-semibold text-gray-700">Mod de administrare:</dt>
-            <dd>{{ selectedProduct.mod_administrare }}</dd>
-          </div>
-          <div class="bg-gray-100 rounded-md p-3 mb-3">
-            <dt class="font-semibold text-gray-700">Producător:</dt>
-            <dd>{{ selectedProduct.producator }}</dd>
-          </div>
-        </dl>
-        <button
-          id="ok-btn"
-          class="mt-5 px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300"
-          (click)="closeModal()"
+        <div
+          class="relative top-20 mx-auto p-5 border w-full max-w-3xl shadow-lg rounded-md bg-white"
         >
-          Închide
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-<div
-  *ngIf="showConfirmationModal"
-  class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto"
->
-  <div class="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
-
-  <div
-    class="bg-white rounded-lg overflow-hidden shadow-2xl transform transition-all m-4 sm:m-8"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modal-headline"
-  >
-    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-      <div class="sm:flex sm:items-start">
-        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
-          <h3
-            class="text-lg leading-6 font-medium text-gray-900"
-            id="modal-headline"
-          >
-            Confirmare comandă
-          </h3>
-          <div class="mt-2">
-            <p class="text-sm text-gray-500 mt-4 mb-4">
-              În cazul în care nu sunteți complet încrezător în recomandarea
-              algoritmului nostru, vă oferim posibilitatea de a vă programa la o
-              întâlnire online cu unul dintre medicii noștri nutriționiști.<br />
-              Doriți să continuați cu finalizarea comenzii sau preferați să
-              programați o întâlnire cu doctorul?
-            </p>
+          <div class="mt-3 text-center">
+            <h3 class="text-2xl leading-6 font-bold text-gray-900 mb-4">
+              {{ selectedProduct.nume }}
+            </h3>
+            <img
+              [src]="productImageUrls[selectedProduct.id]"
+              alt="{{ selectedProduct.nume }}"
+              class="mx-auto h-48 w-full object-contain"
+            />
+            <div class="mt-2 px-7 py-3 text-left">
+              <p class="text-base text-gray-500 mb-3">
+                {{ selectedProduct.descriere }}
+              </p>
+              <dl class="mb-4">
+                <div class="bg-gray-100 rounded-md p-3 mb-3">
+                  <dt class="font-semibold text-gray-700">Beneficii:</dt>
+                  <dd>{{ selectedProduct.beneficii }}</dd>
+                </div>
+                <div class="bg-gray-100 rounded-md p-3 mb-3">
+                  <dt class="font-semibold text-gray-700">Contraindicații:</dt>
+                  <dd>{{ selectedProduct.contra_indicatii }}</dd>
+                </div>
+                <div class="bg-gray-100 rounded-md p-3 mb-3">
+                  <dt class="font-semibold text-gray-700">Ingrediente:</dt>
+                  <dd>{{ selectedProduct.ingrediente }}</dd>
+                </div>
+                <div class="bg-gray-100 rounded-md p-3 mb-3">
+                  <dt class="font-semibold text-gray-700">
+                    Mod de administrare:
+                  </dt>
+                  <dd>{{ selectedProduct.mod_administrare }}</dd>
+                </div>
+                <div class="bg-gray-100 rounded-md p-3 mb-3">
+                  <dt class="font-semibold text-gray-700">Producător:</dt>
+                  <dd>{{ selectedProduct.producator }}</dd>
+                </div>
+              </dl>
+              <button
+                id="ok-btn"
+                class="mt-5 px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-300"
+                (click)="closeModal()"
+              >
+                Închide
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse">
-      <button
-        type="button"
-        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-600 focus:outline-none focus:border-green-700 focus:shadow-outline-green sm:ml-3 sm:w-auto sm:text-sm"
-        (click)="finalizeOrder()"
+      <div
+        *ngIf="showConfirmationModal"
+        class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto"
       >
-        Finalizează comanda
-      </button>
-      <button
-        type="button"
-        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-600 focus:outline-none focus:border-green-700 focus:shadow-outline-green sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-        (click)="scheduleAppointment()"
-      >
-        Programare la doctor
-      </button>
-    </div>
-    <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-      <button
-        type="button"
-        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-gray-100 text-base font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:border-gray-500 focus:shadow-outline-gray sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
-        (click)="showConfirmationModal = false"
-      >
-        Închide
-      </button>
-    </div>
+        <div class="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
+
+        <div
+          class="bg-white rounded-lg overflow-hidden shadow-2xl transform transition-all m-4 sm:m-8"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-headline"
+        >
+          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="sm:flex sm:items-start">
+              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                <h3
+                  class="text-lg leading-6 font-medium text-gray-900"
+                  id="modal-headline"
+                >
+                  Confirmare comandă
+                </h3>
+                <div class="mt-2">
+                  <p class="text-sm text-gray-500 mt-4 mb-4">
+                    În cazul în care nu sunteți complet încrezător în
+                    recomandarea algoritmului nostru, vă oferim posibilitatea de
+                    a vă programa la o întâlnire online cu unul dintre medicii
+                    noștri nutriționiști.<br />
+                    Doriți să continuați cu finalizarea comenzii sau preferați
+                    să programați o întâlnire cu doctorul?
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse">
+            <button
+              type="button"
+              class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-600 focus:outline-none focus:border-green-700 focus:shadow-outline-green sm:ml-3 sm:w-auto sm:text-sm"
+              (click)="finalizeOrder()"
+            >
+              Finalizează comanda
+            </button>
+            <button
+              type="button"
+              class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-green-500 text-base font-medium text-white hover:bg-green-600 focus:outline-none focus:border-green-700 focus:shadow-outline-green sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+              (click)="scheduleAppointment()"
+            >
+              Programare la doctor
+            </button>
+          </div>
+          <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+            <button
+              type="button"
+              class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-gray-100 text-base font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:border-gray-500 focus:shadow-outline-gray sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+              (click)="showConfirmationModal = false"
+            >
+              Închide
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <app-footer></app-footer>
   </div>
-</div>
+</body>
