@@ -19,8 +19,14 @@ export class CheckoutComponent {
   orderDetailsDTO: OrderDetailsDTO | undefined;
 
   checkoutForm = new FormGroup({
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
+    firstName: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[a-zA-ZăîâșțĂÎÂȘȚ -]+$'),
+    ]),
+    lastName: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[a-zA-ZăîâșțĂÎÂȘȚ -]+$'),
+    ]),
     phoneNumber: new FormControl('', [
       Validators.required,
       Validators.pattern('^(\\+\\d{1,3})?\\d{10}$'),
