@@ -25,7 +25,7 @@ export class MyOrdersComponent implements OnInit {
           this.orders = data;
         },
         error: (error) => {
-          console.error('There was an error retrieving the orders', error);
+          console.error(error);
         },
       });
     }
